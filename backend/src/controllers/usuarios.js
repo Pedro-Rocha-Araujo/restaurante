@@ -1,14 +1,17 @@
 import ModelUsuario from "../models/Usuario.js"
+import bcrypt from "bcrypt"
+
 
 export async function cadastrarUsuario(request, response) {
   try{
+    const salt = await bcrypt.genSalt(12)
     const { nome, email, senha } = request.body
     const verificar = await ModelUsuario.findOne({email: request.body.email})
     if(!verificar){
       const query = await ModelUsuario.insertOne({
         nome: nome,
         email: email,
-        senha: senha
+        senha: await bcrypt.hash(senha, salt)
       })
       return response.json(query)
     } else {
@@ -28,7 +31,7 @@ export async function logarUsuario(request, response) {
     if(verificar) {
       
     } else {
-      return response.json({"Erro": "Usuário não encontrado!"})
+      return response.json({"Erro": "Os dados não conferem!"})
     }
   } catch {
     response.json({"Erro": "Erro ao logar!"})
