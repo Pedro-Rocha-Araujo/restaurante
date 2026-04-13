@@ -1,5 +1,7 @@
 import ModelUsuario from "../models/Usuario.js"
+import "dotenv/config"
 import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
 
 
 export async function cadastrarUsuario(request, response) {
@@ -25,15 +27,25 @@ export async function cadastrarUsuario(request, response) {
 export async function logarUsuario(request, response) {
   try {
     const verificar = await ModelUsuario.findOne({
-      email: request.body.email, 
-      senha: request.body.senha
+      email: request.body.email
     })
     if(verificar) {
-      
+      const checarSenha = await bcrypt.compare(request.body.senha, verificar.senha)
+      if(checarSenha) {
+        const token = jwt.sign({nome: verificar.nome}, process.env.SENHA_JWT)
+        return response.json({"Mensagem": "Senha correta!", token: token})
+      } else {
+        return response.json({"Erro": "As informações não estão batendo!"})
+      }
+ 
     } else {
       return response.json({"Erro": "Os dados não conferem!"})
     }
   } catch {
     response.json({"Erro": "Erro ao logar!"})
   }
+}
+
+export async function protegida(request, response) {
+  response.send("<h1>Rota protegida!</h1>")
 }

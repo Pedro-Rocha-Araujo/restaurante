@@ -1,7 +1,6 @@
 import express from "express"
 import { connect } from "mongoose"
 import cors from "cors"
-import jwt from "jsonwebtoken"
 
 import router from "./src/routes.js"
 import "dotenv/config"
