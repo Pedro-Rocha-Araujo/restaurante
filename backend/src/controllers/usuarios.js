@@ -8,6 +8,9 @@ export async function cadastrarUsuario(request, response) {
   try{
     const salt = await bcrypt.genSalt(12)
     const { nome, email, senha } = request.body
+    if(!nome) {
+      return response.json({erro: "Todos os campos são obrigatórios!"})
+    }
     const verificar = await ModelUsuario.findOne({email: request.body.email})
     if(!verificar){
       const query = await ModelUsuario.insertOne({
@@ -15,7 +18,8 @@ export async function cadastrarUsuario(request, response) {
         email: email,
         senha: await bcrypt.hash(senha, salt)
       })
-      return response.json(query)
+      const token = jwt.sign({nome: nome}, process.env.SENHA_JWT)
+      return response.json({query: query, token: token})
     } else {
       return response.json({"Erro": "Usuário já tem um cadastro!"})
     }

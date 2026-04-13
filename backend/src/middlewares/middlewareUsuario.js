@@ -19,3 +19,11 @@ export async function checarLogin(request, response, next) {
     next()
   })
 }
+
+export function checarCampos(request, response, next) {
+  const {email, senha} = request.body
+  if(!email, !senha) {
+    return response.json({Erro: "Os campos são obrigatórios!"})
+  }
+  next()
+}
