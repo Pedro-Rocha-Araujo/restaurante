@@ -1,5 +1,6 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import axios from "axios"
 import "./login.css"
 
 function Login() {
@@ -7,6 +8,7 @@ function Login() {
     email: "",
     senha: ""
   })
+  const navigate = useNavigate()
 
   function handleChange(e) {
     const { name, value } = e.target
@@ -18,9 +20,17 @@ function Login() {
     })
   }
 
-  function logar(e) {
+  async function logar(e) {
     e.preventDefault()
-    alert(`Login ${usuario.email} feito com sucesso!`)
+    try {
+      const response = await axios.post("http://localhost:4000/entrar", {
+        email: usuario.email,
+        senha: usuario.senha
+      })
+      navigate("/home")
+    } catch {
+      alert("Erro ao logar o usuário!")
+    }
     setUsuario({
       email: "",
       senha: ""

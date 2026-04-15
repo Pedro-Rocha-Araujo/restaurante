@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import axios from "axios"
 import "./cadastro.css"
 
 function Cadastro() {
@@ -19,9 +20,17 @@ function Cadastro() {
     })
   }
 
-  function salvarUsuario(e) {
+  async function salvarUsuario(e) {
     e.preventDefault()
-    alert(`${usuario.nome} Cadastrado com sucesso!`)
+    try{
+      const response = await axios.post("http://localhost:4000/cadastro", {
+      nome: usuario.nome,
+      email: usuario.email,
+      senha: usuario.senha
+      })
+    } catch {
+      alert("Erro ao cadastrar Usuário")
+    }
     setUsuario({
       nome: "",
       email: "",
