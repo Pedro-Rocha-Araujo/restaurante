@@ -28,13 +28,13 @@ function Login() {
         senha: usuario.senha
       })
       navigate("/home")
+      setUsuario({
+        email: "",
+        senha: ""
+      })
     } catch {
       alert("Erro ao logar o usuário!")
     }
-    setUsuario({
-      email: "",
-      senha: ""
-    })
   }
 
   return (

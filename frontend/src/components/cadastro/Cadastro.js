@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import "./cadastro.css"
 
@@ -9,6 +9,7 @@ function Cadastro() {
     email: "",
     senha: ""
   })
+  const navigate = useNavigate()
 
   function handleChange(e) {
     const { name, value } = e.target
@@ -24,18 +25,20 @@ function Cadastro() {
     e.preventDefault()
     try{
       const response = await axios.post("http://localhost:4000/cadastro", {
-      nome: usuario.nome,
-      email: usuario.email,
-      senha: usuario.senha
+        nome: usuario.nome,
+        email: usuario.email,
+        senha: usuario.senha
       })
-    } catch {
+      navigate("/home")
+      setUsuario({
+        nome: "",
+        email: "",
+        senha: ""
+      })
+    } catch (erro) {
+      console.log(erro)
       alert("Erro ao cadastrar Usuário")
     }
-    setUsuario({
-      nome: "",
-      email: "",
-      senha: ""
-    })
   }
 
   return (

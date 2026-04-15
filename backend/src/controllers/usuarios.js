@@ -12,13 +12,14 @@ export async function cadastrarUsuario(request, response) {
       return response.status(400).json({erro: "Todos os campos são obrigatórios!"})
     }
     const verificar = await ModelUsuario.findOne({email: email})
-    if(!verificar){
+    if(!verificar) {
       const query = await ModelUsuario.insertOne({
         nome: nome,
         email: email,
         senha: await bcrypt.hash(senha, salt)
       })
-      const token = jwt.sign({id: verificar.id}, process.env.SENHA_JWT, {expiresIn: "1d"})
+      
+      const token = jwt.sign({id: query.id}, process.env.SENHA_JWT, {expiresIn: "1d"})
       return response.status(201).json({query: query, token: token})
     } else {
       return response.status(409).json({"Erro": "Usuário já tem um cadastro!"})
