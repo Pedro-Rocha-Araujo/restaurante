@@ -5,17 +5,17 @@ import "dotenv/config"
 export async function checarLogin(request, response, next) {
   const informacaoToken = request.headers["authorization"]
   if(!informacaoToken) {
-    return response.status(401).json({erro: "Usuário precisa estar logado para acessar essa rota!"})
+    return response.status(403).json({erro: "Usuário precisa estar logado para acessar essa rota!"})
   }
   const token = informacaoToken.split(" ")[1]
     if(!token) {
-    return response.status(401).json({erro: "Token inválido!"})
+    return response.status(403).json({erro: "Token inválido!"})
   }
-  jwt.verify(token, process.env.SENHA_JWT, (erro, usuario)=>{
+  jwt.verify(token, process.env.SENHA_JWT, (erro, data)=>{
     if(erro){
-      response.status(500).json({erro: "Erro ao verificar o token!"})
+      return response.status(403).json({erro: "Erro ao verificar o token!"})
     }
-    request.user = usuario
+    request.user = data
     next()
   })
 }

@@ -76,7 +76,7 @@ function Cadastro() {
             <button>Cadastrar</button>
           </form>
         </section>
-        <p>Já possui uma conta? <Link to="/login">Login</Link></p>
+        <p>Já possui uma conta? <Link to="/">Login</Link></p>
       </div>
     </div>
   )
