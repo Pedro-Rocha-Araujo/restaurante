@@ -9,7 +9,7 @@ function RouterApp() {
     <Routes>
       <Route path="/cadastro" element={ <Cadastro /> } />
       <Route path="/" element={ <Login /> } />
-      <Route path="/home" element={ <RotaProtegida> <Home /> </RotaProtegida>  } />
+      <Route path="/home" element={ <> <Home /> </>  } />
     </Routes>
   )
 }

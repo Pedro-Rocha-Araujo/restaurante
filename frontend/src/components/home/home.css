@@ -1,0 +1,59 @@
+main {
+  background-color: #f3f3f3;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+header {
+  background-color: rgb(63, 63, 63);
+  color: #fff;
+  padding: 2rem 4rem;
+}
+
+section {
+  width: 98%;
+  max-width: 1820px;
+  padding: 1rem 0 0 0;
+  margin: 0 auto;
+}
+
+section h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+div.pratos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1080px;
+}
+
+div.prato {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  max-width: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-radius: 0.4rem;
+  box-shadow: -3px 3px 4px 1px rgba(0, 0, 0, 0.253);
+}
+
+div.prato img {
+  width: 94%;
+  border-radius: 0.4rem;
+}
+
+div.footer {
+  margin-top: 0.4rem;
+  width: 94%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
