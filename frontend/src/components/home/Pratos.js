@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 function Pratos() {
   return (
     <section className="pratos">
@@ -20,7 +22,7 @@ function Pratos() {
         <div className="prato">
           <img src="https://static.vecteezy.com/system/resources/thumbnails/056/202/171/small/add-image-or-photo-icon-vector.jpg" />
           <div className="footer">
-            <h3>Adicionar prato</h3>
+            <h3><Link to="novo-prato">Adicionar prato</Link></h3>
             <i class="fa-solid fa-circle-plus fa-lg"></i>
           </div>
         </div>

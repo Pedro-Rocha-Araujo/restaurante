@@ -41,7 +41,7 @@ div.prato, div.pedido {
   align-items: center;
   padding: 0.6rem 0;
   border-radius: 0.4rem;
-  box-shadow: -3px 3px 4px 1px rgba(0, 0, 0, 0.253);
+  box-shadow: -3px 3px 4px 1px rgba(0, 0, 0, 0.116);
 }
 
 div.prato img {

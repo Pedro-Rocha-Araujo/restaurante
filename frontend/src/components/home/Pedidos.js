@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 function Pedidos() {
   return (
     <section className="pedidos">
@@ -17,7 +19,7 @@ function Pedidos() {
         </div>
         <div className="prato">
           <div className="footer">
-            <h3>Adicionar pedido</h3>
+            <h3><Link to="novo-pedido">Adicionar pedido</Link></h3>
             <i class="fa-solid fa-circle-plus fa-lg"></i>
           </div>
         </div>

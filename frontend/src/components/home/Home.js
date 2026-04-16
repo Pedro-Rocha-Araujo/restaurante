@@ -1,4 +1,5 @@
 import "./home.css"
+import Header from "../Header"
 import Pratos from "./Pratos"
 import Pedidos from "./Pedidos"
 
@@ -6,9 +7,7 @@ function Home() {
   return (
     <div className="home">
       <main>
-        <header>
-          <h1><i class="fa-solid fa-house"></i> Página inicial</h1>
-        </header>
+        <Header titulo="Página Inicial" emoji={<i class="fa-solid fa-house"></i>} />
         <Pratos />
         <Pedidos />
       </main>
