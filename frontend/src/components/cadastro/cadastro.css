@@ -20,7 +20,7 @@ section.cadastro h1 {
 }
 
 div.header-cadastro {
-  background-color: #386dbd;
+  background-color: rgb(63, 63, 63);
   padding: 1.4rem 0;
 }
 
@@ -45,13 +45,13 @@ form.form-cadastro button {
   width: 100%;
   height: 2.6rem;
   border: none;
-  background-color: #386dbd;
+  background-color: rgb(63, 63, 63);
   color: #fff;
   transition: all 0.2s;
 }
 
 form.form-cadastro button:hover {
-  background-color: #4f7cbe;
+  background-color: rgb(53, 53, 53);
 }
 
 div.cadastro p {
@@ -61,7 +61,7 @@ div.cadastro p {
 }
 
 div.cadastro a {
-  color: #386dbd;
+  color: rgb(63, 63, 63);
   text-decoration: none;
 }
 

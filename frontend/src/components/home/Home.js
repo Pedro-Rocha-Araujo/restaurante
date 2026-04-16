@@ -7,7 +7,7 @@ function Home() {
     <div className="home">
       <main>
         <header>
-          <h1>Página inicial!</h1>
+          <h1><i class="fa-solid fa-house"></i> Página inicial</h1>
         </header>
         <Pratos />
         <Pedidos />

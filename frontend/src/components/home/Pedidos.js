@@ -1,7 +1,7 @@
 function Pedidos() {
   return (
     <section className="pedidos">
-      <h2>Pedidos</h2>
+      <h2>Pedidos <i class="fa-solid fa-clipboard"></i></h2>
       <div className="pedidos">
         <div className="pedido">
           <div className="footer">
@@ -17,8 +17,8 @@ function Pedidos() {
         </div>
         <div className="prato">
           <div className="footer">
-            <h3>Mesa 3</h3>
-            <i class="fa-solid fa-eye fa-lg"></i>
+            <h3>Adicionar pedido</h3>
+            <i class="fa-solid fa-circle-plus fa-lg"></i>
           </div>
         </div>
       </div>
