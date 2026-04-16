@@ -42,7 +42,6 @@ export async function logarUsuario(request, response) {
       } else {
         return response.status(401).json({"Erro": "Email e ou senha inválidos!"})
       }
- 
     } else {
       return response.status(401).json({"Erro": "Email e ou senha inválidos!"})
     }

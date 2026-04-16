@@ -27,7 +27,8 @@ function Login() {
         email: usuario.email,
         senha: usuario.senha
       })
-      navigate("/home")
+      localStorage.setItem("token", response.data.token)
+      return navigate("/home")
       setUsuario({
         email: "",
         senha: ""
