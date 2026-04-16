@@ -2,7 +2,7 @@ main {
   background-color: #f3f3f3;
   min-height: 100dvh;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto 1fr 1fr;
 }
 
 header {
@@ -23,7 +23,7 @@ section h2 {
   margin-bottom: 1rem;
 }
 
-div.pratos {
+div.pratos, div.pedidos {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -33,7 +33,7 @@ div.pratos {
   max-width: 1080px;
 }
 
-div.prato {
+div.prato, div.pedido {
   background-color: rgb(255, 255, 255);
   width: 100%;
   max-width: 330px;
@@ -56,4 +56,10 @@ div.footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 1080px) {
+  h1 {
+    text-align: center;
+  }
 }
