@@ -49,7 +49,3 @@ export async function logarUsuario(request, response) {
     return response.status(500).json({"Erro": "Erro ao logar!"})
   }
 }
-
-export async function protegida(request, response) {
-  response.send("<h1>Rota protegida!</h1>")
-}
