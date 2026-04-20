@@ -16,7 +16,7 @@ function Pratos() {
       setPratos(lista)
     }
     getPratos()
-  }, [pratos, itemCard])
+  }, [itemCard])
 
   async function setarId(id) {
     try{
