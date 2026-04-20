@@ -9,6 +9,11 @@ body {
   background-color: #eee;
 }
 
+button {
+  border: none;
+  padding: 0.6rem 1rem;
+}
+
 button:hover, i:hover {
   cursor: pointer;
 }
@@ -19,6 +24,14 @@ h1 {
 
 h2 {
   font-size: clamp(1.6rem, 8vw, 2.2rem);
+}
+
+header a {
+  color: #fff;
+}
+
+header a:hover {
+  text-decoration: none;
 }
 
 a {

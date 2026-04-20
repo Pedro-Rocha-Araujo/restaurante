@@ -1,33 +1,63 @@
 import { Link } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { toast } from "react-toastify"
+import axios from "axios"
+import Card from "./card/Card"
 
 function Pratos() {
+  const [pratos, setPratos ] = useState([])
+  const [itemCard, setItemCard] = useState(null)
+
+  useEffect(()=>{
+    async function getPratos() {
+      const response = await axios.get("http://localhost:4000/pratos")
+      let lista = [response.data[0], response.data[1]]
+      console.log(lista)
+      setPratos(lista)
+    }
+    getPratos()
+  }, [pratos, itemCard])
+
+  async function setarId(id) {
+    try{
+      const response = await axios.get("http://localhost:4000/prato/"+id)
+      console.log(response.data)
+      setItemCard(response.data)
+    } catch {
+      toast.error("Erro ao buscar o prato!")
+    }
+  }
+
   return (
-    <section className="pratos">
-      <h2>Pratos disponíveis <i class="fa-solid fa-utensils"></i></h2>
-      <div className="pratos">
-        <div className="prato">
-          <img src="https://img.freepik.com/fotos-gratis/closeup-de-carne-assada-com-molho-legumes-e-batatas-fritas-em-um-prato-sobre-a-mesa_181624-35847.jpg?semt=ais_hybrid&w=740&q=80" />
-          <div className="footer">
-            <h3>Arroz e feijão</h3>
-            <i class="fa-solid fa-eye fa-lg"></i>
+    <>
+      {itemCard && (
+        <Card itemCard={itemCard} setItemCard={setItemCard} />
+      )}
+      <section className="pratos">
+        <h2><Link to="/pratos">Pratos disponíveis <i class="fa-solid fa-utensils"></i></Link></h2>
+        <div className="pratos">
+          {pratos.map((prato, index)=>{
+            return(
+              <div id={prato._id} key={prato.key} className="prato">
+                <img src={prato.foto} />
+                <div className="footer">
+                  <h3>{prato.nome}</h3>
+                  <i onClick={()=>setarId(prato._id)} class="fa-solid fa-eye fa-lg"></i>
+                </div>
+              </div>
+            )
+          })}
+          <div className="prato">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/056/202/171/small/add-image-or-photo-icon-vector.jpg" />
+            <div className="footer">
+              <h3><Link to="/novo-prato">Adicionar prato</Link></h3>
+              <Link to="/novo-prato"><i class="fa-solid fa-circle-plus fa-lg"></i></Link>
+            </div>
           </div>
         </div>
-        <div className="prato">
-          <img src="https://www.sabornamesa.com.br/media/k2/items/cache/10a451d868feb5fd854c1535dddc148e_XL.jpg" />
-          <div className="footer">
-            <h3>Arroz e feijão</h3>
-            <i class="fa-solid fa-eye fa-lg"></i>
-          </div>
-        </div>
-        <div className="prato">
-          <img src="https://static.vecteezy.com/system/resources/thumbnails/056/202/171/small/add-image-or-photo-icon-vector.jpg" />
-          <div className="footer">
-            <h3><Link to="novo-prato">Adicionar prato</Link></h3>
-            <i class="fa-solid fa-circle-plus fa-lg"></i>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+
+    </>
   )
 }
 

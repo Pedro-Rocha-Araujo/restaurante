@@ -1,0 +1,41 @@
+
+div.background {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.384);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100dvh;
+}
+
+div.card {
+  background-color: #fff;
+  width: 98%;
+  max-width: 720px;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+div.card img {
+  width: 96%;
+  margin: 1rem auto;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+div.infos {
+  width: 96%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+div.card button {
+  margin: 1rem auto;
+  width: 96%;
+  background-color: rgb(255, 53, 53);
+  color: #fff;
+}

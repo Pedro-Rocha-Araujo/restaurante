@@ -1,19 +1,21 @@
 import { Router } from "express"
+// imports das funções de CRUD
 import { cadastrarUsuario, logarUsuario } from "./controllers/usuarios.js"
-import { checarLogin, checarCampos } from "./middlewares/middlewareUsuario.js"
 import { getPratos, getPrato, cadastrarPrato, editarPrato, deletarPrato } from "./controllers/pratos.js"
+// import dos middlewares
+import { checarLogin, checarCampos } from "./middlewares/middlewareUsuario.js"
 
 const router = Router()
-
 
 // Rotas de cadastro e de login
 router.post("/cadastro", checarCampos, cadastrarUsuario)
 router.post("/entrar", checarCampos, logarUsuario)
-// Rotas de CRUD relacionadas à os pratos
+// Rotas de CRUD relacionadas aos pratos
 router.get("/pratos", getPratos)
 router.get("/prato/:id", getPrato)
 router.post("/cadastrar-prato", cadastrarPrato)
 router.put("/editar-prato/:id", editarPrato)
 router.delete("/deletar-prato/:id", deletarPrato)
+// Rotas de CRUD relacinadas aos pedidos
 
 export default router
