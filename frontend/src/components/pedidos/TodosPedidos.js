@@ -1,11 +1,13 @@
 import Header from "../Header"
-import Card from "../home/card/Card"
+import CardPedido from "../home/card/CardPedido"
 import axios from "axios"
 import {toast} from "react-toastify"
 import { useState, useEffect } from "react"
 
 function TodosPedidos() {
   const [pedidos, setPedidos] = useState([])
+  const [itemCard, setItemCard] = useState(null)
+
   console.log(pedidos)
   useEffect(()=>{
     async function getPedidos() {
@@ -13,10 +15,13 @@ function TodosPedidos() {
       setPedidos(response.data)
     }
     getPedidos()
-  }, [])
+  }, [itemCard, setItemCard])
 
   return (
     <>  
+    {itemCard && (
+      <CardPedido itemCard={itemCard} setItemCard={setItemCard} />
+    )}
     <Header titulo="Pedidos" emoji={<i className="fa-solid fa-clipboard"></i>} />
     <section className="pedidos">
       <h2>Pedidos!</h2>
@@ -26,7 +31,7 @@ function TodosPedidos() {
             <div className="pedido">
                 <div className="footer">
                   <h3>Mesa {pedido.mesa}</h3>
-                    <i className="fa-solid fa-eye fa-lg"></i>
+                    <i onClick={()=>setItemCard(pedido)} className="fa-solid fa-eye fa-lg"></i>
                 </div>
             </div>
           )

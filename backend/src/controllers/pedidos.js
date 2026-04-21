@@ -36,7 +36,7 @@ export async function cadastrarPedido(request, response) {
 export async function deletarPedido(request, response) {
   try {
     const { id } = request.params
-    const query = ModelPedido.findByIdAndDelete(id)
+    const query = await ModelPedido.findByIdAndDelete(id)
     return response.status(200).json({Mensagem: "Pedido deletado com sucesso!"})
   } catch {
     return response.status(500).json({Erro: "Erro ao deletar o pedido!"})
