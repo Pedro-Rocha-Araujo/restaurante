@@ -40,3 +40,7 @@ div.card button {
   background-color: rgb(255, 53, 53);
   color: #fff;
 }
+
+span.valor {
+  margin: 0.8rem 0 0 0;
+}

@@ -45,7 +45,7 @@ function Card ({ itemCard, setItemCard }) {
               })}
             </div>
 
-            <span>R$ {itemCard.valor},00</span>
+            <span className="valor">Total a pagar: R$ {itemCard.valor},00</span>
           </div>
         <button onClick={removerCard}>Fechar</button>
       </div>
