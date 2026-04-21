@@ -19,16 +19,13 @@ export async function getPedido(request, response) {
 }
 
 export async function cadastrarPedido(request, response) {
-  const { mesa, lista } = request.body
-  let valor = 0
-  lista.forEach((item)=>{
-    valor += item.preco
-  })
+  const { status, mesa, lista, valor } = request.body
   try {
     const query = await ModelPedido.insertOne({
+      status: status,
       mesa: mesa,
       lista: lista,
-      valor: valor
+      valor: Number(valor)
     })
     response.status(201).json(query)
   } catch {
@@ -36,12 +33,12 @@ export async function cadastrarPedido(request, response) {
   }
 }
 
-export default function deletarPedido(request, response) {
+export async function deletarPedido(request, response) {
   try {
     const { id } = request.params
     const query = ModelPedido.findByIdAndDelete(id)
-    response.status(200).json({Mensagem: "Pedido deletado com sucesso!"})
+    return response.status(200).json({Mensagem: "Pedido deletado com sucesso!"})
   } catch {
-    response.status(500).json({Erro: "Erro ao deletar o pedido!"})
+    return response.status(500).json({Erro: "Erro ao deletar o pedido!"})
   }
 }

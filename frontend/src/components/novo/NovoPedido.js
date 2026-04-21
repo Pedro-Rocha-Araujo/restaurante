@@ -8,11 +8,11 @@ function NovoPedido() {
   const [pedido, setPedido] = useState({
     status: true,
     mesa: "",
-    lista: [],
   })
+  const [pratos, setPratos] = useState([])
   const [pratoSelecionado, setPratoSelecionado] = useState()
   const [lista, setLista] = useState([])
-  const [pratos, setPratos] = useState([])
+  const [valor, setValor] = useState(0)
 
   function handlePrato(e) {
     setPratoSelecionado(e.target.value)
@@ -31,6 +31,17 @@ function NovoPedido() {
     })
     setLista(novaLista)
   }
+
+  useEffect(()=> {
+    function calcularValor() {
+      let valorTotal = 0
+      lista.map((item, index)=>{
+        valorTotal = valorTotal + item.preco
+      })
+      setValor(valorTotal)
+    }
+    calcularValor()
+  }, [lista])
   
   useEffect(()=>{
     async function getPratos() {
@@ -40,25 +51,40 @@ function NovoPedido() {
     getPratos()
   }, [])
 
+  async function cadastrarPedido() {
+    try {
+      const response = await axios.post("http://localhost:4000/cadastrar-pedido", {
+        status: pedido.status,
+        mesa: `Mesa ${pedido.mesa}`,
+        lista: lista,
+        valor: valor
+      })
+      toast.success("Pedido cadastrado com sucesso!")
+    } catch {
+      toast.error("Erro ao cadastrar o pedido")
+    }
+  }
+
   return (
     <>
       <Header titulo="Novo pedido" emoji={<i class="fa-solid fa-circle-plus"></i>} /> 
       <section className="novo-prato">
         <h2>Formulário</h2>
-        <form className="novo-prato" >
+        <form className="novo-prato" onSubmit={cadastrarPedido} >
             <input type="number" placeholder="Número da mesa" required />
             <select required name="prato" onChange={handlePrato}>
               {pratos.map((prato, index)=>{
                 return (
-                  <option key={index} value={prato._id}>{prato.nome}</option>
+                  <option key={index} value={prato._id}>{prato.nome} - R${prato.preco}</option>
                 )
               })}
             </select>
             <button onClick={adicionarLista} type="button">Adicionar</button>
-            <div className="pratos">
+            <h3 className="titulo-valor">Valor atual: R${valor}</h3>
+            <div className="pratos pequenos">
               {lista.map((prato, index)=>{
                 return (
-                  <div className="prato">
+                  <div className="prato" id="pequeno">
                     <img src={prato.foto} />
                     <div className="informacoes">
                       <h3>{prato.nome}</h3>
@@ -68,7 +94,7 @@ function NovoPedido() {
                 )
               })}
             </div>
-            <button type="submit">Salvar</button>
+            <button type="submit">Finalizar</button>
         </form>
       </section>
     </>
