@@ -5,10 +5,7 @@ import axios from "axios"
 import "./novo.css"
 
 function NovoPedido() {
-  const [pedido, setPedido] = useState({
-    status: true,
-    mesa: "",
-  })
+  const [mesa, setMesa] = useState()
   const [pratos, setPratos] = useState([])
   const [pratoSelecionado, setPratoSelecionado] = useState()
   const [lista, setLista] = useState([])
@@ -51,14 +48,17 @@ function NovoPedido() {
     getPratos()
   }, [])
 
-  async function cadastrarPedido() {
+  async function cadastrarPedido(e) {
+    e.preventDefault()
     try {
       const response = await axios.post("http://localhost:4000/cadastrar-pedido", {
-        status: pedido.status,
-        mesa: `Mesa ${pedido.mesa}`,
+        status: true,
+        mesa: mesa,
         lista: lista,
         valor: valor
       })
+      setLista([])
+      setMesa("")
       toast.success("Pedido cadastrado com sucesso!")
     } catch {
       toast.error("Erro ao cadastrar o pedido")
@@ -71,7 +71,13 @@ function NovoPedido() {
       <section className="novo-prato">
         <h2>Formulário</h2>
         <form className="novo-prato" onSubmit={cadastrarPedido} >
-            <input type="number" placeholder="Número da mesa" required />
+            <input 
+              type="number" 
+              value={mesa} 
+              placeholder="Número da mesa" 
+              required
+              onChange={(e)=>setMesa(e.target.value)}
+              />
             <select required name="prato" onChange={handlePrato}>
               {pratos.map((prato, index)=>{
                 return (

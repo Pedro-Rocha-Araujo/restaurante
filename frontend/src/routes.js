@@ -6,6 +6,7 @@ import Home from "./components/home/Home"
 import NovoPrato from "./components/novo/NovoPrato"
 import NovoPedido from "./components/novo/NovoPedido"
 import TodosPratos from "./components/pratos/TodosPratos"
+import TodosPedidos from "./components/pedidos/TodosPedidos"
 import EditarPrato from "./components/editar/EditarPrato"
 
 import RotaProtegida from "./components/RotaProtegida"
@@ -19,6 +20,7 @@ function RouterApp() {
       <Route path="/novo-prato" element={ <NovoPrato /> } />
       <Route path="/novo-pedido" element={ <NovoPedido /> } />
       <Route path="/pratos" element={ <TodosPratos /> } />
+      <Route path="/pedidos" element={ <TodosPedidos /> } />
       <Route path="/editar-prato/:id" element={ <EditarPrato /> } />
     </Routes>
   )
