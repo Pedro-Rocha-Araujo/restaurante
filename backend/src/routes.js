@@ -2,7 +2,7 @@ import { Router } from "express"
 // imports das funções de CRUD
 import { cadastrarUsuario, logarUsuario } from "./controllers/usuarios.js"
 import { getPratos, getPrato, cadastrarPrato, editarPrato, deletarPrato } from "./controllers/pratos.js"
-import { getPedidos, getPedido, cadastrarPedido, deletarPedido } from "./controllers/pedidos.js"
+import { getPedidos, getPedido, cadastrarPedido, editarPedido, deletarPedido } from "./controllers/pedidos.js"
 // import dos middlewares
 import { checarLogin, checarCampos } from "./middlewares/middlewareUsuario.js"
 
@@ -21,6 +21,7 @@ router.delete("/deletar-prato/:id", deletarPrato)
 router.get("/pedidos", getPedidos)
 router.get("/pedido/:id", getPedido)
 router.post("/cadastrar-pedido", cadastrarPedido)
+router.put("/editar-pedido/:id", editarPedido)
 router.delete("/deletar-pedido/:id", deletarPedido)
 
 export default router
