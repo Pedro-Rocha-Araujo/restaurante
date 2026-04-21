@@ -42,7 +42,7 @@ function Pratos() {
                 <img src={prato.foto} />
                 <div className="footer">
                   <h3>{prato.nome}</h3>
-                  <i onClick={()=>setarId(prato._id)} class="fa-solid fa-eye fa-lg"></i>
+                  <i onClick={()=>setarId(prato._id)} className="fa-solid fa-eye fa-lg"></i>
                 </div>
               </div>
             )
@@ -51,7 +51,7 @@ function Pratos() {
             <img src="https://static.vecteezy.com/system/resources/thumbnails/056/202/171/small/add-image-or-photo-icon-vector.jpg" />
             <div className="footer">
               <h3><Link to="/novo-prato">Adicionar prato</Link></h3>
-              <Link to="/novo-prato"><i class="fa-solid fa-circle-plus fa-lg"></i></Link>
+              <Link to="/novo-prato"><i className="fa-solid fa-circle-plus fa-lg"></i></Link>
             </div>
           </div>
         </div>

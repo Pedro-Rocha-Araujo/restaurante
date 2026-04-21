@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import "./card.css"
 
-function Card ({ itemCard, setItemCard }) {
+function Card({ itemCard, setItemCard }) {
   const navigate = useNavigate()
-  console.log("item card -> "+itemCard)
+
   function removerCard(itemCard) {
     setItemCard(null)
   }
