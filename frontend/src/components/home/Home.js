@@ -7,7 +7,7 @@ function Home() {
   return (
     <div className="home">
       <main>
-        <Header titulo="Página Inicial" emoji={<i className="fa-solid fa-house"></i>} />
+        <Header titulo="Home" emoji={<i className="fa-solid fa-house"></i>} />
         <Pratos />
         <Pedidos />
       </main>

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 import axios from "axios"
 import "./login.css"
 
@@ -34,7 +35,7 @@ function Login() {
         senha: ""
       })
     } catch {
-      alert("Erro ao logar o usuário!")
+      toast.error("Erro ao logar o usuário!")
     }
   }
 
@@ -43,7 +44,7 @@ function Login() {
       <div className="container">
         <section className="login">
           <div className="header-login">
-            <h1>Logar-se</h1>
+            <h1>Login</h1>
           </div>
           <form onSubmit={logar} className="form-login">
             <input 

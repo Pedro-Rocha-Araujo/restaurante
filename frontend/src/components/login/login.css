@@ -14,6 +14,7 @@ section.login {
   background-color: #fff;
   border-radius: 0.4rem;
   overflow: hidden;
+  border: 1px solid rgb(63, 63, 63);
 }
 
 section.login h1 {
@@ -36,6 +37,9 @@ form.form-login {
 }
 
 form.form-login input {
+  border: 1px solid rgb(63, 63, 63);
+  border-left: none;
+  border-right: none;
   font-size: 1.01rem;
   height: 2.4rem;
   width: 100%;

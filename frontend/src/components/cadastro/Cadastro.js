@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 import axios from "axios"
 import "./cadastro.css"
 
@@ -36,7 +37,7 @@ function Cadastro() {
         senha: ""
       })
     } catch {
-      alert("Erro ao cadastrar Usuário")
+      toast.error("Erro ao cadastrar Usuário")
     }
   }
 
@@ -45,7 +46,7 @@ function Cadastro() {
       <div className="container">
         <section className="cadastro">
           <div className="header-cadastro">
-            <h1>Cadastrar-se</h1>
+            <h1>Cadastro</h1>
           </div>
           <form onSubmit={salvarUsuario} className="form-cadastro">
             <input 

@@ -6,7 +6,8 @@ div.cadastro {
 }
 
 section.cadastro {
-  width: 98%;
+  border: 1px solid rgb(63, 63, 63);
+  width: 100%;
   max-width: 580px;
   background-color: #fff;
   border-radius: 0.4rem;
@@ -33,6 +34,9 @@ form.form-cadastro {
 }
 
 form.form-cadastro input {
+  border: 1px solid rgb(63, 63, 63);
+  border-left: none;
+  border-right: none;
   font-size: 1.01rem;
   height: 2.4rem;
   width: 100%;

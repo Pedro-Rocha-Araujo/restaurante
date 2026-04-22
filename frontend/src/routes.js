@@ -17,13 +17,17 @@ function RouterApp() {
     <Routes>
       <Route path="/" element={ <Login /> } />
       <Route path="/cadastro" element={ <Cadastro /> } />
-      <Route path="/home" element={ <> <Home /> </>  } />
-      <Route path="/novo-prato" element={ <NovoPrato /> } />
-      <Route path="/novo-pedido" element={ <NovoPedido /> } />
-      <Route path="/pratos" element={ <TodosPratos /> } />
-      <Route path="/pedidos" element={ <TodosPedidos /> } />
-      <Route path="/editar-prato/:id" element={ <EditarPrato /> } />
-      <Route path="/editar-pedido/:id" element={ <EditarPedido /> } />
+
+      <Route path="/home" element={ <> <RotaProtegida><Home /></RotaProtegida> </>  } />
+
+      <Route path="/novo-prato" element={ <RotaProtegida><NovoPrato /></RotaProtegida> } />
+      <Route path="/novo-pedido" element={ <RotaProtegida><NovoPedido /></RotaProtegida> } />
+
+      <Route path="/pratos" element={ <RotaProtegida><TodosPratos /></RotaProtegida> } />
+      <Route path="/pedidos" element={ <RotaProtegida><TodosPedidos /></RotaProtegida> } />
+
+      <Route path="/editar-prato/:id" element={ <RotaProtegida><EditarPrato /></RotaProtegida> } />
+      <Route path="/editar-pedido/:id" element={ <RotaProtegida><EditarPedido /></RotaProtegida> } />
     </Routes>
   )
 }
