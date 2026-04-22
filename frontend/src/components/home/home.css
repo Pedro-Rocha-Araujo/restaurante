@@ -23,13 +23,22 @@ section h2 {
 }
 
 div.pratos, div.pedidos {
+  width: 100%;
+  max-width: 1080px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 1rem;
   margin: 0 auto;
-  width: 100%;
-  max-width: 1080px;
+}
+
+div.todos {
+  flex-direction: column;
+  align-items: center;
+}
+
+div.todos div.pedido {
+  max-width: 500px;
 }
 
 div.prato, div.pedido {
@@ -41,7 +50,11 @@ div.prato, div.pedido {
   align-items: center;
   padding: 0.6rem 0;
   border-radius: 0.4rem;
-  box-shadow: -3px 3px 4px 1px rgba(0, 0, 0, 0.116);
+  box-shadow: -3px 3px 3px 1px rgba(0, 0, 0, 0.120);
+}
+
+div.add {
+  background-color: rgb(177, 255, 185);
 }
 
 div.prato img {

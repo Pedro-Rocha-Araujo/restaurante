@@ -35,8 +35,7 @@ function Cadastro() {
         email: "",
         senha: ""
       })
-    } catch (erro) {
-      console.log(erro)
+    } catch {
       alert("Erro ao cadastrar Usuário")
     }
   }

@@ -10,7 +10,6 @@ function Card ({ itemCard, setItemCard }) {
   const navigate = useNavigate()
   async function deletarPrato(id) {
     try {
-      console.log(id)
       const response = await axios.delete("http://localhost:4000/deletar-prato/"+itemCard._id)
       setItemCard(null)
       toast.success("Prato deletado com sucesso!")
@@ -30,8 +29,8 @@ function Card ({ itemCard, setItemCard }) {
           <div className="titulo">
             <h2>{itemCard.nome}</h2>
             <div className="botoes">
-              <i onClick={()=>deletarPrato(itemCard._id)} class="fa-solid fa-trash fa-lg"></i>
-              <i onClick={()=>atualizarPrato(itemCard._id)} class="fa-solid fa-pen-to-square fa-lg"></i>
+              <i onClick={()=>deletarPrato(itemCard._id)} className="fa-solid fa-trash fa-lg"></i>
+              <i onClick={()=>atualizarPrato(itemCard._id)} className="fa-solid fa-pen-to-square fa-lg"></i>
             </div>
           </div>
           <p>{itemCard.descricao}</p>

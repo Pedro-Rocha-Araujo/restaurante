@@ -16,10 +16,10 @@ export async function checarIdPrato(request, response, next) {
 export async function checarCamposPrato(request, response, next) {
   try {
     const { foto, nome, preco, descricao } = request.body
-    if(!foto || !nome || !preco || !descricao) {
+    if(!foto?.trim() || !nome?.trim() || preco === undefined || !descricao?.trim()) {
       return response.status(400).json({Erro: "Campos não preenchidos!"})
     }
-    if(preco <= 0 || preco === undefined){
+    if(preco <= 0){
       return response.status(400).json({Erro: "O campo preço precisa estar devidamente preenchido!"})
     }
     next()

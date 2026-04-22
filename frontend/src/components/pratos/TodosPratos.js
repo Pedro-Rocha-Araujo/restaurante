@@ -31,17 +31,17 @@ function TodosPratos() {
       {itemCard && (
         <Card itemCard={itemCard} setItemCard={setItemCard} />
       )}
-    <Header titulo="Pratos" emoji={<i class="fa-solid fa-utensils"></i>} />
+    <Header titulo="Pratos" emoji={<i className="fa-solid fa-utensils"></i>} />
     <section className="pratos">
-      <h2>Pratos disponíveis!</h2>
+      <h2>Pratos Disponíveis</h2>
       <div className="pratos">
         {pratos.map((prato, index)=>{
           return (
-            <div className="prato">
+            <div key={index} className="prato">
                 <img src={prato.foto} />
                 <div className="footer">
                   <h3>{prato.nome}</h3>
-                    <i onClick={()=>setarId(prato._id)} class="fa-solid fa-eye fa-lg"></i>
+                    <i onClick={()=>setarId(prato._id)} className="fa-solid fa-eye fa-lg"></i>
                 </div>
             </div>
           )

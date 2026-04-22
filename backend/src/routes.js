@@ -1,8 +1,24 @@
 import { Router } from "express"
+
 // imports das funções de CRUD
-import { cadastrarUsuario, logarUsuario } from "./controllers/usuarios.js"
-import { getPratos, getPrato, cadastrarPrato, editarPrato, deletarPrato } from "./controllers/pratos.js"
-import { getPedidos, getPedido, cadastrarPedido, editarPedido, deletarPedido } from "./controllers/pedidos.js"
+import { 
+  cadastrarUsuario, 
+  logarUsuario 
+} from "./controllers/usuarios.js"
+import { 
+  getPratos, 
+  getPrato, 
+  cadastrarPrato, 
+  editarPrato, 
+  deletarPrato 
+} from "./controllers/pratos.js"
+import { 
+  getPedidos, 
+  getPedido, 
+  cadastrarPedido, 
+  editarPedido, 
+  deletarPedido 
+} from "./controllers/pedidos.js"
 // import dos middlewares
 import { checarLogin, checarCampos } from "./middlewares/middlewareUsuario.js"
 import { checarIdPrato, checarCamposPrato } from "./middlewares/middlewarePrato.js"

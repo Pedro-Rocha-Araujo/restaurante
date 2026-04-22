@@ -18,7 +18,6 @@ function NovoPrato() {
     async function getPrato() {
       try {
         const response = await axios.get("http://localhost:4000/prato/"+id)
-        console.log(response.data)
         setPrato({
           foto: response.data.foto,
           nome: response.data.nome,
@@ -46,9 +45,9 @@ function NovoPrato() {
     e.preventDefault()
     try {
       const response = await axios.put("http://localhost:4000/editar-prato/"+id, {
-        foto: prato.url,
+        foto: prato.foto,
         nome: prato.nome,
-        preco: prato.preco,
+        preco: Number(prato.preco),
         descricao: prato.descricao
       })
       navigate("/home")
@@ -60,7 +59,7 @@ function NovoPrato() {
 
   return (
     <>
-      <Header titulo="Edição" emoji={<i class="fa-solid fa-pen-to-square"></i>} /> 
+      <Header titulo="Edição" emoji={<i className="fa-solid fa-pen-to-square"></i>} /> 
       <section className="novo-prato">
         <h2>Editar prato</h2>
         <form className="novo-prato" onSubmit={editarPrato} >
@@ -69,7 +68,7 @@ function NovoPrato() {
               placeholder="URL da imagem" 
               onChange={handleChange}
               value={prato.foto}
-              name="url"
+              name="foto"
               required
             />
             <input 

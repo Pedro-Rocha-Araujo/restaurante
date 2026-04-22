@@ -26,13 +26,13 @@ function NovoPrato() {
     e.preventDefault()
     try {
       const response = await axios.post("http://localhost:4000/cadastrar-prato", {
-        foto: prato.url,
+        foto: prato.foto,
         nome: prato.nome,
-        preco: prato.preco,
+        preco: Number(prato.preco),
         descricao: prato.descricao
       })
       setPrato({
-        url: "",
+        foto: "",
         nome: "",
         preco: "",
         descricao: ""
@@ -53,8 +53,8 @@ function NovoPrato() {
               type="text" 
               placeholder="URL da imagem" 
               onChange={handleChange}
-              value={prato.url}
-              name="url"
+              value={prato.foto}
+              name="foto"
               required
             />
             <input 

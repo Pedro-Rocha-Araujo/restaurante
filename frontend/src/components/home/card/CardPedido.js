@@ -30,14 +30,14 @@ function Card({ itemCard, setItemCard }) {
             <div className="titulo">
               <h2>Mesa {itemCard.mesa}</h2>
               <div className="botoes">
-                <i onClick={()=>deletarPedido(itemCard._id)} class="fa-solid fa-trash fa-lg"></i>
-                <i onClick={()=>atualizarPedido(itemCard._id)} class="fa-solid fa-pen-to-square fa-lg"></i>
+                <i onClick={()=>deletarPedido(itemCard._id)} className="fa-solid fa-trash fa-lg"></i>
+                <i onClick={()=>atualizarPedido(itemCard._id)} className="fa-solid fa-pen-to-square fa-lg"></i>
               </div>
             </div>
             <div className="pratos">
               {itemCard.lista.map((prato, index)=>{
                 return (
-                  <div className="prato" id="pequeno">
+                  <div key={index} className="prato" id="pequeno">
                     <img src={prato.foto} />
                     <h3>{prato.nome}</h3>
                   </div>

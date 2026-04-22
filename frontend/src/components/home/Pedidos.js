@@ -21,12 +21,12 @@ function Pedidos() {
         <CardPedido itemCard={itemCard} setItemCard={setItemCard} />
       )}
       <section className="pedidos">
-        <h2><Link to="/pedidos">Pedidos <i class="fa-solid fa-clipboard"></i></Link></h2>
+        <h2><Link to="/pedidos">Pedidos <i className="fa-solid fa-clipboard"></i></Link></h2>
         <div className="pedidos">
 
           {pedidos.map((pedido, index)=>{
             return (
-              <div className="pedido">
+              <div key={index} className="pedido">
                 <div className="footer">
                   <h3>Mesa {pedido.mesa}</h3>
                   <i onClick={()=>setItemCard(pedido)} className="fa-solid fa-eye fa-lg"></i>
@@ -36,10 +36,10 @@ function Pedidos() {
           })}
 
 
-          <div className="prato">
+          <div className="pedido add">
             <div className="footer">
               <h3><Link to="/novo-pedido">Adicionar pedido</Link></h3>
-              <Link to="/novo-pedido"><i class="fa-solid fa-circle-plus fa-lg"></i></Link>
+              <Link to="/novo-pedido"><i className="fa-solid fa-circle-plus fa-lg"></i></Link>
             </div>
           </div>
 
