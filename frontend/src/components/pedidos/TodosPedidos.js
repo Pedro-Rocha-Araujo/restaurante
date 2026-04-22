@@ -23,7 +23,7 @@ function TodosPedidos() {
       <CardPedido itemCard={itemCard} setItemCard={setItemCard} />
     )}
     <Header titulo="Pedidos" emoji={<i className="fa-solid fa-clipboard"></i>} />
-    <section className="pedidos">
+    <section className="pedidos" >
       <h2>Pedidos!</h2>
       <div className="pedidos">
         {pedidos.map((pedido, index)=>{

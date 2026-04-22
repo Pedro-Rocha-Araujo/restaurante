@@ -4,7 +4,7 @@ export async function checarIdPrato(request, response, next) {
   try {
     const { id } = request.params
     const checagem = await ModelPrato.findById(id)
-    if(!checagem) {
+    if(!checagem || id === undefined) {
       return response.status(404).json({Erro: "Id do prato não encontrado!"})
     }
     next()

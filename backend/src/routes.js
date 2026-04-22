@@ -6,6 +6,7 @@ import { getPedidos, getPedido, cadastrarPedido, editarPedido, deletarPedido } f
 // import dos middlewares
 import { checarLogin, checarCampos } from "./middlewares/middlewareUsuario.js"
 import { checarIdPrato, checarCamposPrato } from "./middlewares/middlewarePrato.js"
+import { checarIdPedido, checarCamposPedido } from "./middlewares/middlewarePedido.js"
 
 const router = Router()
 
@@ -20,9 +21,9 @@ router.put("/editar-prato/:id", checarIdPrato, checarCamposPrato, editarPrato)
 router.delete("/deletar-prato/:id", checarIdPrato, deletarPrato)
 // Rotas de CRUD relacinadas aos pedidos
 router.get("/pedidos", getPedidos)
-router.get("/pedido/:id", getPedido)
-router.post("/cadastrar-pedido", cadastrarPedido)
-router.put("/editar-pedido/:id", editarPedido)
-router.delete("/deletar-pedido/:id", deletarPedido)
+router.get("/pedido/:id", checarIdPedido, getPedido)
+router.post("/cadastrar-pedido", checarCamposPedido, cadastrarPedido)
+router.put("/editar-pedido/:id", checarIdPedido, checarCamposPedido, editarPedido)
+router.delete("/deletar-pedido/:id", checarIdPedido, deletarPedido)
 
 export default router
