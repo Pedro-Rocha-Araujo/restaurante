@@ -1,7 +1,8 @@
-
 div.background {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,16 +13,20 @@ div.background {
 div.card {
   background-color: #fff;
   width: 98%;
-  max-width: 660px;
+  max-width: 520px;
   display: flex;
   flex-direction: column;
-  padding: 1rem 0 0 0;
+  padding: 1rem;
   border-radius: 1rem;
 }
 
+div.card h2 {
+  margin: 0.2rem 0;
+  color: #111111;
+}
+
 div.card img {
-  width: 96%;
-  margin: 0 auto 1rem auto;
+  width: 100%;
   aspect-ratio: 4/3;
   object-fit: cover;
 }
@@ -31,6 +36,7 @@ div.infos {
   margin: auto;
   display: flex;
   flex-direction: column;
+  margin-bottom: 0.5rem;
   gap: 0.4rem;
 }
 
@@ -38,8 +44,7 @@ button.card {
   color: #fff;
   background-color: rgb(255, 53, 53);
   border-radius: 1rem;
-  margin: 1rem auto;
-  width: 96%;
+  width: 100%;
   max-width: none;
 }
 

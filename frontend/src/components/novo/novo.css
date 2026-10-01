@@ -16,14 +16,6 @@ section.novo-prato form {
   align-items: center;
 }
 
-section.novo-prato input {
-  height: 2rem;
-  width: 100%;
-  max-width: 400px;
-  padding: 0.4rem;
-  outline: none;
-}
-
 div.informacoes {
   margin-top: 0.4rem;
   width: 100%;

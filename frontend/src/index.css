@@ -58,19 +58,21 @@ input, textarea {
   width: 100%;
   max-width: 400px;
   height: 2.5rem;
-  padding: 0 0.4rem;
+  padding: 0.4rem;
   outline: none;
 }
 textarea {
   min-height: 100px;
 }
 
-input::placeholder {
+input::placeholder, textarea::placeholder {
   color: #1c1c1c;
 }
 
-button {
+button, select {
   color: #fff;
+  border: none;
+  padding: 0.4rem;
   background-color: #1c1c1c;
   font-size: clamp(0.8rem, 2vw, 1rem);
   width: 100%;

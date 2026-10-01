@@ -11,7 +11,7 @@ div.auth div.container {
   max-width: 620px;
 }
 
-div.auth input, button {
+div.auth input, div.auth button {
   max-width: none;
 }
 
