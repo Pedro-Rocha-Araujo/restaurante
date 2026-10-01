@@ -24,28 +24,6 @@ section.novo-prato input {
   outline: none;
 }
 
-section.novo-prato textarea {
-  width: 100%;
-  max-width: 400px;
-  min-height: 100px;
-  padding: 0.4rem;
-}
-
-section.novo-prato button {
-  background-color: rgb(63, 63, 63);
-  color: #fff;
-  width: 100%;
-  max-width: 400px;
-}
-
-select {
-  width: 100%;
-  max-width: 400px;
-  height: 2rem;
-  background-color: rgb(63, 63, 63);
-  color: #fff;
-}
-
 div.informacoes {
   margin-top: 0.4rem;
   width: 100%;

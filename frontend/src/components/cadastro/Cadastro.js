@@ -10,6 +10,7 @@ function Cadastro() {
     email: "",
     senha: ""
   })
+
   const navigate = useNavigate()
 
   function handleChange(e) {
@@ -31,24 +32,21 @@ function Cadastro() {
         senha: usuario.senha
       })
       navigate("/home")
-      setUsuario({
-        nome: "",
-        email: "",
-        senha: ""
-      })
     } catch {
       toast.error("Erro ao cadastrar Usuário")
     }
   }
 
   return (
-    <div className="cadastro">
+    <div className="auth">
       <div className="container">
-        <section className="cadastro">
-          <div className="header-cadastro">
+        <section className="auth">
+
+          <div className="header-auth">
             <h1>Cadastro</h1>
           </div>
-          <form onSubmit={salvarUsuario} className="form-cadastro">
+
+          <form onSubmit={salvarUsuario} className="form-auth">
             <input 
               type="text" 
               name="nome" 
@@ -75,7 +73,9 @@ function Cadastro() {
             />
             <button>Cadastrar</button>
           </form>
+
         </section>
+
         <p>Já possui uma conta? <Link to="/">Login</Link></p>
       </div>
     </div>

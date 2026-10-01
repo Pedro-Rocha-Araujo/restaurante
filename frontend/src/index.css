@@ -6,23 +6,32 @@
 }
 
 body {
-  background-color: #eee;
+  background-image:
+    linear-gradient(#1c1c1cf5, #111111f3),
+    url("../public/background.jpg")
+  ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100dvh;
+}
+
+header {
+  background-color: #111;
+  color: #fff;
+  padding: 2rem 4rem;
 }
 
 button {
   border: none;
-  padding: 0.6rem 1rem;
 }
 
 button:hover, i:hover {
   cursor: pointer;
 }
 
-h1 {
-  font-size: clamp(2rem, 8vw, 2.4rem);
-}
-
 h2 {
+  color: #fff;
   font-size: clamp(1.6rem, 8vw, 2.2rem);
 }
 
@@ -35,10 +44,32 @@ header a:hover {
 }
 
 a {
-  color: #000;
+  color: #fff;
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
+}
+
+input, textarea {
+  border: 1px solid #1c1c1c;
+  font-size: clamp(0.8rem, 2vw, 1.04rem);
+  width: 100%;
+  max-width: 400px;
+  height: 2.5rem;
+  padding: 0 0.4rem;
+  outline: none;
+}
+textarea {
+  min-height: 100px;
+}
+
+button {
+  color: #fff;
+  background-color: #1c1c1c;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  width: 100%;
+  max-width: 400px;
+  height: 2.5rem;
 }

@@ -25,7 +25,7 @@ function NovoPrato() {
   async function cadastrarPrato(e) {
     e.preventDefault()
     try {
-      const response = await axios.post("http://localhost:4000/cadastrar-prato", {
+      await axios.post("http://localhost:4000/cadastrar-prato", {
         foto: prato.foto,
         nome: prato.nome,
         preco: Number(prato.preco),

@@ -6,11 +6,9 @@ import Pedidos from "./Pedidos"
 function Home() {
   return (
     <div className="home">
-      <main>
-        <Header titulo="Home" emoji={<i className="fa-solid fa-house"></i>} />
-        <Pratos />
-        <Pedidos />
-      </main>
+      <Header titulo="Home" emoji={<i className="fa-solid fa-house"></i>} />
+      <Pratos />
+      <Pedidos />
     </div>
   )
 }

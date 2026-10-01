@@ -5,8 +5,10 @@ import { ToastContainer } from "react-toastify"
 function App() {
   return (
     <BrowserRouter>
-      <ToastContainer autoClose="1000" />
-      <RouterApp />
+      <main>
+        <ToastContainer autoClose="1000" />
+        <RouterApp />
+      </main>
     </BrowserRouter>
   );
 }

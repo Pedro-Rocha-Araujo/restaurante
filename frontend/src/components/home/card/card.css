@@ -34,11 +34,13 @@ div.infos {
   gap: 0.4rem;
 }
 
-div.card button {
+button.card {
+  color: #fff;
+  background-color: rgb(255, 53, 53);
+  border-radius: 1rem;
   margin: 1rem auto;
   width: 96%;
-  background-color: rgb(255, 53, 53);
-  color: #fff;
+  max-width: none;
 }
 
 span.valor {

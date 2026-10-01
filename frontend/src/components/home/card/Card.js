@@ -36,7 +36,7 @@ function Card ({ itemCard, setItemCard }) {
           <p>{itemCard.descricao}</p>
           <span>R$ {itemCard.preco},00</span>
         </div>
-        <button onClick={removerCard}>Fechar</button>
+        <button className="card" onClick={removerCard}>Fechar</button>
       </div>
     </div>
   )

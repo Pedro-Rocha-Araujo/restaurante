@@ -2,7 +2,6 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import axios from "axios"
-import "./login.css"
 
 function Login() {
   const [usuario, setUsuario] = useState({
@@ -37,13 +36,13 @@ function Login() {
   }
 
   return (
-    <div className="login">
+    <div className="auth">
       <div className="container">
-        <section className="login">
-          <div className="header-login">
+        <section className="auth">
+          <div className="header-auth">
             <h1>Login</h1>
           </div>
-          <form onSubmit={logar} className="form-login">
+          <form onSubmit={logar} className="form-auth">
             <input 
               type="email" 
               name="email"
