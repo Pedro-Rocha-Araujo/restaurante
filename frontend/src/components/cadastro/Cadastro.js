@@ -39,6 +39,7 @@ function Cadastro() {
 
   return (
     <div className="auth">
+    
       <div className="container">
         <section className="auth">
 
@@ -67,7 +68,7 @@ function Cadastro() {
               type="password" 
               name="senha" 
               required 
-              placeholder="Senha"
+              placeholder="Senha de acesso"
               value={usuario.senha}
               onChange={handleChange}
             />
