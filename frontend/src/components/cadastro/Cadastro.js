@@ -25,7 +25,7 @@ function Cadastro() {
   async function salvarUsuario(e) {
     e.preventDefault()
     try{
-      const response = await axios.post("http://localhost:4000/cadastro", {
+      await axios.post("http://localhost:4000/cadastro", {
         nome: usuario.nome,
         email: usuario.email,
         senha: usuario.senha

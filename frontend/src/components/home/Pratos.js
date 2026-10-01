@@ -10,9 +10,14 @@ function Pratos() {
 
   useEffect(()=>{
     async function getPratos() {
-      const response = await axios.get("http://localhost:4000/pratos")
-      let lista = [response.data[0], response.data[1]]
-      setPratos(lista)
+      const token = localStorage.getItem("token")
+      const response = await axios.get("http://localhost:4000/pratos", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      console.log(response.data)
+      setPratos(response.data)
     }
     getPratos()
   }, [itemCard])
@@ -31,20 +36,25 @@ function Pratos() {
       {itemCard && (
         <Card itemCard={itemCard} setItemCard={setItemCard} />
       )}
+
       <section className="pratos">
         <h2><Link to="/pratos">Pratos <i className="fa-solid fa-utensils"></i></Link></h2>
         <div className="pratos">
-          {pratos.map((prato, index)=>{
-            return(
-              <div id={prato._id} key={index} className="prato">
-                <img src={prato.foto} />
-                <div className="footer">
-                  <h3>{prato.nome}</h3>
-                  <i onClick={()=>setarId(prato._id)} className="fa-solid fa-eye fa-lg"></i>
+
+          { pratos.length > 0 && (
+            pratos.map((prato, index)=>{
+              return (
+                <div id={prato._id} key={index} className="prato">
+                  <img src={prato.foto} />
+                  <div className="footer">
+                    <h3>{prato.nome}</h3>
+                    <i onClick={()=>setarId(prato._id)} className="fa-solid fa-eye fa-lg"></i>
+                  </div>
                 </div>
-              </div>
-            )
-          })}
+              )
+            }))
+          }
+
           <div className="prato add">
             <img src="https://static.vecteezy.com/system/resources/thumbnails/056/202/171/small/add-image-or-photo-icon-vector.jpg" />
             <div className="footer">

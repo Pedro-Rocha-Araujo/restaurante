@@ -10,7 +10,7 @@ function NovoPedido() {
   const [pratoSelecionado, setPratoSelecionado] = useState()
   const [lista, setLista] = useState([])
   const [valor, setValor] = useState(0)
-
+  console.log(pratos)
   function handlePrato(e) {
     setPratoSelecionado(e.target.value)
   }
@@ -31,10 +31,9 @@ function NovoPedido() {
 
   useEffect(()=> {
     function calcularValor() {
-      let valorTotal = 0
-      lista.map((item, index)=>{
-        valorTotal = valorTotal + item.preco
-      })
+      const valorTotal = lista.reduce((acumulador, atual)=> {
+        return acumulador + atual.preco
+      }, 0)
       setValor(valorTotal)
     }
     calcularValor()
@@ -42,7 +41,12 @@ function NovoPedido() {
   
   useEffect(()=>{
     async function getPratos() {
-      const response = await axios.get("http://localhost:4000/pratos")
+      const token = localStorage.getItem("token")
+      const response = await axios.get("http://localhost:4000/pratos", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       setPratos(response.data)
     }
     getPratos()
@@ -51,7 +55,7 @@ function NovoPedido() {
   async function cadastrarPedido(e) {
     e.preventDefault()
     try {
-      const response = await axios.post("http://localhost:4000/cadastrar-pedido", {
+      await axios.post("http://localhost:4000/cadastrar-pedido", {
         status: true,
         mesa: mesa,
         lista: lista,
@@ -70,7 +74,9 @@ function NovoPedido() {
       <Header titulo="Novo pedido" emoji={<i className="fa-solid fa-circle-plus"></i>} /> 
       <section className="novo-prato">
         <h2>Formulário</h2>
+
         <form className="novo-prato" onSubmit={cadastrarPedido} >
+
             <input 
               type="number" 
               value={mesa} 
@@ -78,6 +84,7 @@ function NovoPedido() {
               required
               onChange={(e)=>setMesa(e.target.value)}
               />
+
             <select required name="prato" onChange={handlePrato}>
               {pratos.map((prato, index)=>{
                 return (

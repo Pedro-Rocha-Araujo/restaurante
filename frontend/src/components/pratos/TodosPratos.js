@@ -11,7 +11,12 @@ function TodosPratos() {
 
   useEffect(()=>{
     async function getPratos() {
-      const response = await axios.get("http://localhost:4000/pratos")
+      const token = localStorage.getItem("token")
+      const response = await axios.get("http://localhost:4000/pratos", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       setPratos(response.data)
     }
     getPratos()

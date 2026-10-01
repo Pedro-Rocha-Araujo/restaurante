@@ -9,6 +9,7 @@ function Login() {
     email: "",
     senha: ""
   })
+
   const navigate = useNavigate()
 
   function handleChange(e) {
@@ -30,10 +31,6 @@ function Login() {
       })
       localStorage.setItem("token", response.data.token)
       return navigate("/home")
-      setUsuario({
-        email: "",
-        senha: ""
-      })
     } catch {
       toast.error("Erro ao logar o usuário!")
     }

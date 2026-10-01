@@ -10,7 +10,7 @@ function Pedidos() {
   useEffect(()=>{
     async function getPedidos() {
       const response = await axios.get("http://localhost:4000/pedidos")
-      setPedidos([response.data[0], response.data[1]])
+      setPedidos(response.data)
     }
     getPedidos()
   }, [])

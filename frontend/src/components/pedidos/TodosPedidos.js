@@ -2,7 +2,6 @@ import Header from "../Header"
 import CardPedido from "../home/card/CardPedido"
 import { Link } from "react-router-dom"
 import axios from "axios"
-import {toast} from "react-toastify"
 import { useState, useEffect } from "react"
 
 function TodosPedidos() {
