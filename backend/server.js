@@ -1,8 +1,8 @@
 import express from "express"
-import { connect } from "mongoose"
+import mongoose from "mongoose"
 import cors from "cors"
+import router from "./src/routes/routes.js"
 
-import router from "./src/routes.js"
 import "dotenv/config"
 
 const app = express()
@@ -10,14 +10,17 @@ app.use(express.json())
 app.use(cors())
 app.use(router)
 
-async function conectarBanco() {
+async function iniciarServidor() {
   try {
-    connect(process.env.URL_MONGO)
+    await mongoose.connect(process.env.URL_MONGO)
     console.log("Banco conectado com sucesso!")
-  } catch {
+    app.listen(4000, () => {
+      console.log("Servidor rodando!")
+    })
+  } catch(erro) {
+    console.log(erro)
     console.log("Erro ao conectar o banco!")
   }
 }
-conectarBanco()
 
-app.listen(4000, ()=>console.log("Servidor rodando!"))
+iniciarServidor()

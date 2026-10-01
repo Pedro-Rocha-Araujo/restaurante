@@ -4,33 +4,33 @@ import { Router } from "express"
 import { 
   cadastrarUsuario, 
   logarUsuario 
-} from "./controllers/usuarios.js"
+} from "../controllers/usuarios.js"
 import { 
   getPratos, 
   getPrato, 
   cadastrarPrato, 
   editarPrato, 
   deletarPrato 
-} from "./controllers/pratos.js"
+} from "../controllers/pratos.js"
 import { 
   getPedidos, 
   getPedido, 
   cadastrarPedido, 
   editarPedido, 
   deletarPedido 
-} from "./controllers/pedidos.js"
+} from "../controllers/pedidos.js"
 // import dos middlewares
-import { checarLogin, checarCampos } from "./middlewares/middlewareUsuario.js"
-import { checarIdPrato, checarCamposPrato } from "./middlewares/middlewarePrato.js"
-import { checarIdPedido, checarCamposPedido } from "./middlewares/middlewarePedido.js"
+import { checarLogin, checarCampos } from "../middlewares/middlewareUsuario.js"
+import { checarIdPrato, checarCamposPrato } from "../middlewares/middlewarePrato.js"
+import { checarIdPedido, checarCamposPedido } from "../middlewares/middlewarePedido.js"
 
 const router = Router()
 
 // Rotas de cadastro e de login
-router.post("/cadastro", checarCampos, cadastrarUsuario)
+router.post("/cadastro", cadastrarUsuario)
 router.post("/entrar", checarCampos, logarUsuario)
 // Rotas de CRUD relacionadas aos pratos
-router.get("/pratos", getPratos)
+router.get("/pratos", checarLogin, getPratos)
 router.get("/prato/:id", checarIdPrato, getPrato)
 router.post("/cadastrar-prato", checarCamposPrato, cadastrarPrato)
 router.put("/editar-prato/:id", checarIdPrato, checarCamposPrato, editarPrato)
