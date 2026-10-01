@@ -10,12 +10,12 @@ function NovoPedido() {
   const [pratoSelecionado, setPratoSelecionado] = useState()
   const [lista, setLista] = useState([])
   const [valor, setValor] = useState(0)
-  console.log(pratos)
-  function handlePrato(e) {
-    setPratoSelecionado(e.target.value)
-  }
 
-  function adicionarLista(e) {
+  function adicionarLista() {
+    if(!pratoSelecionado) {
+      toast.error("Selecione um item!")
+      return
+    }
     const encontrarPrato = pratos.find(prato => prato._id === pratoSelecionado)
     setLista((prevValue)=>{
       return [...prevValue, encontrarPrato]
@@ -85,10 +85,11 @@ function NovoPedido() {
               onChange={(e)=>setMesa(e.target.value)}
               />
 
-            <select required name="prato" onChange={handlePrato}>
-              {pratos.map((prato, index)=>{
+            <select required name="prato" value={pratoSelecionado} onChange={(e)=> setPratoSelecionado(e.target.value)}>
+              <option disabled selected>Selecione o prato</option>
+              {pratos.map((prato)=>{
                 return (
-                  <option key={index} value={prato._id}>{prato.nome} - R${prato.preco}</option>
+                  <option key={prato._id} value={prato._id}> {prato.nome} - R${prato.preco} </option>
                 )
               })}
             </select>
