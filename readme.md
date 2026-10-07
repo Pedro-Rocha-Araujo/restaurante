@@ -3,7 +3,7 @@
 ### 📝 Descrição do projeto:
 O presente projeto é um sistema de gerenciamento desenvolvido para um restaurante, sendo 100% responsivo e desenvolvido com abordagem mobile-first.
 
-<img width="1920" height="911" alt="projeto-restaurante" src="https://github.com/user-attachments/assets/3113ba9b-53cd-47e4-8b86-019bb7addf8f" />
+<img width="1920" height="911" alt="projeto-restaurante" src="https://github.com/user-attachments/assets/4b0a29b5-1a0f-45d0-a556-dec59c6e649b" />
 
 ### ⚙️ Funcionalidades do Projeto:
 * Cadastro e login para os funcionários
