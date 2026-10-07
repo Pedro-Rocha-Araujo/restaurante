@@ -6,7 +6,9 @@ import "./novo.css"
 
 function NovoPedido() {
   const [mesa, setMesa] = useState()
+
   const [pratos, setPratos] = useState([])
+
   const [pratoSelecionado, setPratoSelecionado] = useState()
   const [lista, setLista] = useState([])
   const [valor, setValor] = useState(0)
@@ -22,11 +24,12 @@ function NovoPedido() {
     })
   }
 
-  function removerLista(id) {
-    let novaLista = lista.filter((item)=>{
-      return item._id !== id
+  function removerLista(index) {
+    const listaAtualizada = lista.filter((_, i)=> {
+      return i !== index
     })
-    setLista(novaLista)
+    setLista(listaAtualizada)
+    console.log(listaAtualizada)
   }
 
   useEffect(()=> {
@@ -83,7 +86,7 @@ function NovoPedido() {
               placeholder="Número da mesa" 
               required
               onChange={(e)=>setMesa(e.target.value)}
-              />
+            />
 
             <select required name="prato" value={pratoSelecionado} onChange={(e)=> setPratoSelecionado(e.target.value)}>
               <option disabled selected>Selecione o prato</option>
@@ -94,7 +97,9 @@ function NovoPedido() {
               })}
             </select>
             <button onClick={adicionarLista} type="button">Adicionar</button>
+
             <h3 className="titulo-valor">Valor atual: R${valor}</h3>
+            
             <div className="pratos pequenos">
               {lista.map((prato, index)=>{
                 return (
@@ -102,7 +107,7 @@ function NovoPedido() {
                     <img src={prato.foto} />
                     <div className="informacoes">
                       <h3>{prato.nome}</h3>
-                      <i onClick={()=>removerLista(prato._id)} className="fa-solid fa-trash"></i>
+                      <i onClick={()=> removerLista(index)} className="fa-solid fa-trash"></i>
                     </div>
                   </div>
                 )
