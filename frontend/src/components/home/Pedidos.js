@@ -29,10 +29,10 @@ function Pedidos() {
 
           {pedidos.map((pedido)=>{
             return (
-              <div key={pedido._id} className="pedido">
+              <div onClick={()=>setItemCard(pedido)} key={pedido._id} className="pedido">
                 <div className="footer">
                   <h3>Mesa {pedido.mesa}</h3>
-                  <i onClick={()=>setItemCard(pedido)} className="fa-solid fa-eye fa-lg"></i>
+                  <i className="fa-solid fa-eye fa-lg"></i>
                 </div>
               </div>
             )
