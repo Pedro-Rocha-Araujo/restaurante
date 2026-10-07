@@ -16,8 +16,10 @@ function Pratos() {
           Authorization: `Bearer ${token}`
         }
       })
-      console.log(response.data)
-      setPratos(response.data)
+      const array = response.data
+      setPratos(array.filter((_,i)=>{
+        return i < 2
+      }))
     }
     getPratos()
   }, [itemCard])

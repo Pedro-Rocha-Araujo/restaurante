@@ -6,7 +6,10 @@ function App() {
   return (
     <BrowserRouter>
       <main>
-        <ToastContainer autoClose="1000" />
+        <ToastContainer 
+          autoClose="1000" 
+          theme="dark"
+        />
         <RouterApp />
       </main>
     </BrowserRouter>
