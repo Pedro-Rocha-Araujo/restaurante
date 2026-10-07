@@ -2,6 +2,7 @@ div.background {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1;
   background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
@@ -13,26 +14,28 @@ div.background {
 div.card {
   background-color: #fff;
   width: 98%;
-  max-width: 520px;
+  max-width: 620px;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 1rem;
 }
 
 div.card h2 {
-  margin: 0.2rem 0;
-  color: #111111;
+  margin-bottom: 0.2rem;
+  color: #1c1c1c;
 }
 
 div.card img {
   width: 100%;
   aspect-ratio: 4/3;
+  border-radius: 0.5rem 0.5rem 0 0;
   object-fit: cover;
+  margin-bottom: 0.5rem;
 }
 
 div.infos {
-  width: 96%;
+  width: 100%;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -47,6 +50,7 @@ button.card {
   width: 100%;
   max-width: none;
 }
+
 
 span.valor {
   margin: 0.8rem 0 0 0;

@@ -9,7 +9,7 @@
 
 body {
   background-image:
-    linear-gradient(#111111f5, #000000f3),
+    linear-gradient(#111111e3, #000000e3),
     url("../public/background.jpg")
   ;
   background-position: center;
@@ -42,16 +42,12 @@ header a {
   color: #fff;
 }
 
-header a:hover {
-  text-decoration: none;
-}
-
 a {
   color: #fff;
   text-decoration: none;
 }
 
-a:hover {
+h2 a:hover {
   border-bottom: 2px solid #fff;
 }
 

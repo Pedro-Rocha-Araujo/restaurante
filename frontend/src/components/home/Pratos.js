@@ -3,10 +3,13 @@ import { useState, useEffect } from "react"
 import { toast } from "react-toastify"
 import axios from "axios"
 import Card from "./card/Card"
+import { useNavigate } from "react-router-dom"
 
 function Pratos() {
   const [pratos, setPratos ] = useState([])
   const [itemCard, setItemCard] = useState(null)
+
+  const navigate = useNavigate()
 
   useEffect(()=>{
     async function getPratos() {
@@ -46,22 +49,22 @@ function Pratos() {
           { pratos.length > 0 && (
             pratos.map((prato)=>{
               return (
-                <div id={prato._id} key={prato._id} className="prato">
+                <div onClick={()=>setarId(prato._id)} id={prato._id} key={prato._id} className="prato">
                   <img src={prato.foto} />
                   <div className="footer">
                     <h3>{prato.nome}</h3>
-                    <i onClick={()=>setarId(prato._id)} className="fa-solid fa-eye fa-lg"></i>
+                    <i className="fa-solid fa-eye fa-lg"></i>
                   </div>
                 </div>
               )
             }))
           }
 
-          <div className="prato add">
+          <div onClick={()=>navigate("/novo-prato")} className="prato add">
             <img src="https://static.vecteezy.com/system/resources/thumbnails/056/202/171/small/add-image-or-photo-icon-vector.jpg" />
             <div className="footer">
-              <h3><Link to="/novo-prato">Adicionar prato</Link></h3>
-              <Link to="/novo-prato"><i className="fa-solid fa-circle-plus fa-lg"></i></Link>
+              <h3>Adicionar prato</h3>
+              <i className="fa-solid fa-circle-plus fa-lg"></i>
             </div>
           </div>
         </div>

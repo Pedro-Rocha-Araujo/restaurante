@@ -2,10 +2,13 @@ import { useState, useEffect } from "react"
 import CardPedido from "./card/CardPedido"
 import axios from "axios"
 import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 function Pedidos() {
   const [pedidos, setPedidos] = useState([])
   const [itemCard, setItemCard] = useState(null)
+
+  const navigate = useNavigate()
 
   useEffect(()=>{
     async function getPedidos() {
@@ -39,10 +42,10 @@ function Pedidos() {
           })}
 
 
-          <div className="pedido add">
+          <div onClick={()=>navigate("/novo-pedido")} className="pedido add">
             <div className="footer">
-              <h3><Link to="/novo-pedido">Adicionar pedido</Link></h3>
-              <Link to="/novo-pedido"><i className="fa-solid fa-circle-plus fa-lg"></i></Link>
+              <h3>Adicionar pedido</h3>
+              <i className="fa-solid fa-circle-plus fa-lg"></i>
             </div>
           </div>
 
