@@ -10,7 +10,10 @@ function Pedidos() {
   useEffect(()=>{
     async function getPedidos() {
       const response = await axios.get("http://localhost:4000/pedidos")
-      setPedidos(response.data)
+      const array = response.data
+      setPedidos(array.filter((_,i)=> {
+        return i < 2
+      }))
     }
     getPedidos()
   }, [])
@@ -24,9 +27,9 @@ function Pedidos() {
         <h2><Link to="/pedidos">Pedidos <i className="fa-solid fa-clipboard"></i></Link></h2>
         <div className="pedidos">
 
-          {pedidos.map((pedido, index)=>{
+          {pedidos.map((pedido)=>{
             return (
-              <div key={index} className="pedido">
+              <div key={pedido._id} className="pedido">
                 <div className="footer">
                   <h3>Mesa {pedido.mesa}</h3>
                   <i onClick={()=>setItemCard(pedido)} className="fa-solid fa-eye fa-lg"></i>

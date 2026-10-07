@@ -29,7 +29,7 @@ function Pratos() {
       const response = await axios.get("http://localhost:4000/prato/"+id)
       setItemCard(response.data)
     } catch {
-      toast.error("Erro ao buscar o prato!")
+      toast.error("Erro!")
     }
   }
 
@@ -44,9 +44,9 @@ function Pratos() {
         <div className="pratos">
 
           { pratos.length > 0 && (
-            pratos.map((prato, index)=>{
+            pratos.map((prato)=>{
               return (
-                <div id={prato._id} key={index} className="prato">
+                <div id={prato._id} key={prato._id} className="prato">
                   <img src={prato.foto} />
                   <div className="footer">
                     <h3>{prato.nome}</h3>
