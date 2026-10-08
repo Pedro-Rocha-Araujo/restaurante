@@ -6,12 +6,12 @@ import "./card.css"
 function Card({ itemCard, setItemCard }) {
   const navigate = useNavigate()
 
-  function removerCard(itemCard) {
+  function removerCard() {
     setItemCard(null)
   }
   async function deletarPedido(id) {
     try {
-      const response = await axios.delete("http://localhost:4000/deletar-pedido/"+id)
+      await axios.delete("http://localhost:4000/deletar-pedido/"+id)
       setItemCard(null)
       toast.success("Pedido deletado com sucesso!")
     } catch {
@@ -35,10 +35,13 @@ function Card({ itemCard, setItemCard }) {
               </div>
             </div>
             <div className="pratos">
-              {itemCard.lista.map((prato, index)=>{
+              {itemCard.lista.map((prato)=>{
                 return (
-                  <div key={index} className="prato" id="pequeno">
-                    <img src={prato.foto} />
+                  <div key={prato._id} className="prato" id="pequeno">
+                    <img 
+                      src={prato.foto} 
+                      alt={`Imagem do prato ${prato.nome}`}
+                    />
                     <h3>{prato.nome}</h3>
                   </div>
                 )

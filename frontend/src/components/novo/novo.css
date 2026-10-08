@@ -1,4 +1,4 @@
-section.novo {
+section.formulario {
   width: 98%;
   max-width: 1820px;
   margin: 0 auto;
@@ -7,7 +7,7 @@ section.novo {
   align-items: center;
 }
 
-section.novo form {
+section.formulario form {
   width: 100%;
   max-width: 620px;
   display: flex;
@@ -17,19 +17,19 @@ section.novo form {
   align-items: center;
 }
 
-section.novo form input {
+section.formulario form input {
   max-width: none;
 }
 
-section.novo form select {
+section.formulario form select {
   max-width: none;
 }
 
-section.novo form textarea {
+section.formulario form textarea {
   max-width: 620px;
 }
 
-section.novo form button {
+section.formulario form button {
   max-width: none;
 }
 
@@ -53,13 +53,14 @@ div.pratos-pequenos::-webkit-scrollbar {
 }
 
 div#pequeno i {
-  position: absolute;
+  color: #fff;
+  background-color: #f44;
+  cursor: pointer;
   top: 0.6rem;
   right: 0.6rem;
-  background-color: #fff;
   padding: 0.5rem;
   border-radius: 50%;
-
+  position: absolute;
 }
 
 #pequeno h3 {

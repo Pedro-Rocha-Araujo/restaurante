@@ -20,31 +20,39 @@ function TodosPedidos() {
 
   return (
     <>  
-    {itemCard && (
-      <CardPedido itemCard={itemCard} setItemCard={setItemCard} />
-    )}
-    <Header titulo="Pedidos" emoji={<i className="fa-solid fa-clipboard"></i>} />
-    <section className="pedidos" >
-      <h2> <i className="fa-solid fa-clipboard"></i> Pedidos</h2>
-      <div className="pedidos todos">
-        {pedidos.map((pedido, index)=>{
-          return (
-            <div onClick={()=>setItemCard(pedido)} key={index} className="pedido">
-                <div className="footer">
-                  <h3>Mesa {pedido.mesa}</h3>
-                    <i className="fa-solid fa-eye fa-lg"></i>
-                </div>
+
+      {itemCard && (
+        <CardPedido itemCard={itemCard} setItemCard={setItemCard} />
+      )}
+
+      <Header 
+        titulo="Pedidos" 
+        emoji={<i className="fa-solid fa-clipboard"></i>} 
+      />
+
+      <section className="pedidos" >
+        <h2> <i className="fa-solid fa-clipboard"></i> Pedidos</h2>
+        <div className="pedidos todos">
+          {pedidos.map((pedido)=>{
+            return (
+              <div onClick={()=>setItemCard(pedido)} key={pedido._nome} className="pedido">
+                  <div className="footer">
+                    <h3>Mesa {pedido.mesa}</h3>
+                      <i className="fa-solid fa-eye fa-lg"></i>
+                  </div>
+              </div>
+            )
+          })}
+
+          <div onClick={()=>navigate("/novo-pedido")} className="pedido add">
+            <div className="footer">
+              <h3>Adicionar pedido</h3>
+              <i className="fa-solid fa-circle-plus fa-lg"></i>
             </div>
-          )
-        })}
-        <div className="pedido add">
-          <div className="footer">
-            <h3 onClick={()=>navigate("/novo-pedido")}>Adicionar pedido</h3>
-            <i className="fa-solid fa-circle-plus fa-lg"></i>
           </div>
         </div>
-      </div>
-    </section>
+        
+      </section>
     </>
   )
 }

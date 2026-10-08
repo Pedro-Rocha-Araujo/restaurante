@@ -50,7 +50,10 @@ function Pratos() {
             pratos.map((prato)=>{
               return (
                 <div onClick={()=>setarId(prato._id)} id={prato._id} key={prato._id} className="prato">
-                  <img src={prato.foto} />
+                  <img 
+                    src={prato.foto} 
+                    alt={`Foto do prato ${prato.nome}`}
+                  />
                   <div className="footer">
                     <h3>{prato.nome}</h3>
                     <i className="fa-solid fa-eye fa-lg"></i>
@@ -61,7 +64,10 @@ function Pratos() {
           }
 
           <div onClick={()=>navigate("/novo-prato")} className="prato add">
-            <img src="https://static.vecteezy.com/system/resources/thumbnails/056/202/171/small/add-image-or-photo-icon-vector.jpg" />
+            <img 
+              src="https://static.vecteezy.com/system/resources/thumbnails/056/202/171/small/add-image-or-photo-icon-vector.jpg" 
+              alt={`Imagem com um símbolo de mais, representando a ação de adicionar um novo prato ao cardápio.`}
+            />
             <div className="footer">
               <h3>Novo prato</h3>
               <i className="fa-solid fa-circle-plus fa-lg"></i>

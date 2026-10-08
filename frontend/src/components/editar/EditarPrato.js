@@ -29,7 +29,7 @@ function NovoPrato() {
       }
     }
     getPrato()
-  }, [])
+  }, [id])
 
   function handleChange(e) {
     const { name, value } = e.target
@@ -44,7 +44,7 @@ function NovoPrato() {
   async function editarPrato(e) {
     e.preventDefault()
     try {
-      const response = await axios.put("http://localhost:4000/editar-prato/"+id, {
+      await axios.put("http://localhost:4000/editar-prato/"+id, {
         foto: prato.foto,
         nome: prato.nome,
         preco: Number(prato.preco),
@@ -60,7 +60,7 @@ function NovoPrato() {
   return (
     <>
       <Header titulo="Edição" emoji={<i className="fa-solid fa-pen-to-square"></i>} /> 
-      <section className="novo-prato">
+      <section className="novo-prato formulario">
         <h2>Editar prato</h2>
         <form className="novo-prato" onSubmit={editarPrato} >
             <input 

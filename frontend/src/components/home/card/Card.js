@@ -4,13 +4,13 @@ import "./card.css"
 import { useNavigate } from "react-router-dom"
 
 function Card ({ itemCard, setItemCard }) {
-  function removerCard(itemCard) {
+  function removerCard() {
     setItemCard(null)
   }
   const navigate = useNavigate()
-  async function deletarPrato(id) {
+  async function deletarPrato() {
     try {
-      const response = await axios.delete("http://localhost:4000/deletar-prato/"+itemCard._id)
+      await axios.delete("http://localhost:4000/deletar-prato/"+itemCard._id)
       setItemCard(null)
       toast.success("Prato deletado com sucesso!")
     } catch {
@@ -24,7 +24,10 @@ function Card ({ itemCard, setItemCard }) {
   return (
     <div className="background">
       <div className="card">
-        <img src={itemCard.foto} />
+        <img 
+          src={itemCard.foto} 
+          alt={`Foto do prato ${itemCard.nome}`}
+        />
         <div className="infos">
           <div className="titulo">
             <h2>{itemCard.nome}</h2>

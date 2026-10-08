@@ -18,7 +18,7 @@ function NovoPedido() {
     setPratoSelecionado(e.target.value)
   }
 
-  function adicionarLista(e) {
+  function adicionarLista() {
     const encontrarPrato = pratos.find(prato => prato._id === pratoSelecionado)
     setLista((prevValue)=>{
       return [...prevValue, encontrarPrato]
@@ -44,10 +44,9 @@ function NovoPedido() {
 
   useEffect(()=> {
     function calcularValor() {
-      let valorTotal = 0
-      lista.map((item, index)=>{
-        valorTotal = valorTotal + item.preco
-      })
+      const valorTotal = lista.reduce((acumulador, atual)=>{
+        return acumulador + atual
+      }, 0)
       setValor(valorTotal)
     }
     calcularValor()
@@ -64,7 +63,7 @@ function NovoPedido() {
   async function editarPedido(e) {
     e.preventDefault()
     try {
-      const response = await axios.put("http://localhost:4000/editar-pedido/"+id, {
+      await axios.put("http://localhost:4000/editar-pedido/"+id, {
         status: true,
         mesa: mesa,
         lista: lista,
@@ -80,30 +79,38 @@ function NovoPedido() {
   return (
     <>
       <Header titulo="Editar pedido" emoji={<i className="fa-solid fa-circle-plus"></i>} /> 
-      <section className="novo-prato">
+      
+      <section className="novo-prato formulario">
         <h2>Formulário</h2>
         <form className="novo-prato" onSubmit={editarPedido} >
+
             <input 
               type="number" 
               value={mesa} 
               placeholder="Número da mesa" 
               required
               onChange={(e)=>setMesa(e.target.value)}
-              />
+            />
+
             <select required name="prato" onChange={handlePrato}>
-              {pratos.map((prato, index)=>{
+              {pratos.map((prato)=>{
                 return (
-                  <option key={index} value={prato._id}>{prato.nome} - R${prato.preco}</option>
+                  <option key={prato._id} value={prato._id}>{prato.nome} - R${prato.preco}</option>
                 )
               })}
             </select>
+
             <button onClick={adicionarLista} type="button">Adicionar</button>
+
             <h3 className="titulo-valor">Valor atual: R${valor}</h3>
             <div className="pratos pequenos">
-              {lista.map((prato, index)=>{
+              {lista.map((prato)=>{
                 return (
-                  <div key={index} className="prato" id="pequeno">
-                    <img src={prato.foto} />
+                  <div key={prato._id} className="prato" id="pequeno">
+                    <img 
+                      src={prato.foto} 
+                      alt={`Foto do prato ${prato.foto}`}
+                     />
                     <div className="informacoes">
                       <h3>{prato.nome}</h3>
                       <i onClick={()=>removerLista(prato._id)} className="fa-solid fa-trash"></i>

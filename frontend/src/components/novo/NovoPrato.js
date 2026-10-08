@@ -45,10 +45,10 @@ function NovoPrato() {
 
   return (
     <>
-      <Header titulo="Novo prato" emoji={<i class="fa-solid fa-circle-plus"></i>} /> 
-      <section className="novo">
+      <Header titulo="Novo prato" emoji={<i className="fa-solid fa-circle-plus"></i>} /> 
+      <section className="formulario">
         <h2>Formulário</h2>
-        <form className="novo" onSubmit={cadastrarPrato} >
+        <form  onSubmit={cadastrarPrato} >
             <input 
               type="text" 
               placeholder="URL da imagem" 
