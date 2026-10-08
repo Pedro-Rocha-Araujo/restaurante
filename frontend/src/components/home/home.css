@@ -24,7 +24,6 @@ div.prato:hover, div.pedido:hover {
 }
 
 div.todos {
-  background-color: purple;
   flex-direction: column;
   align-items: center;
 }
@@ -53,6 +52,7 @@ div.pedido {
 }
 
 div.add {
+  color: #1c1c1c;
   background-color: #99ee99;
 }
 

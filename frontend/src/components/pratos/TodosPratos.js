@@ -38,15 +38,15 @@ function TodosPratos() {
       )}
     <Header titulo="Pratos" emoji={<i className="fa-solid fa-utensils"></i>} />
     <section className="pratos">
-      <h2>Pratos Disponíveis</h2>
+      <h2> <i className="fa-solid fa-utensils"></i> Pratos Disponíveis</h2>
       <div className="pratos">
         {pratos.map((prato, index)=>{
           return (
-            <div key={index} className="prato">
+            <div onClick={()=>setarId(prato._id)} key={index} className="prato">
                 <img src={prato.foto} />
                 <div className="footer">
                   <h3>{prato.nome}</h3>
-                    <i onClick={()=>setarId(prato._id)} className="fa-solid fa-eye fa-lg"></i>
+                    <i className="fa-solid fa-eye fa-lg"></i>
                 </div>
             </div>
           )

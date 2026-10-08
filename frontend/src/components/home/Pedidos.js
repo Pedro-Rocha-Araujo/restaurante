@@ -44,7 +44,7 @@ function Pedidos() {
 
           <div onClick={()=>navigate("/novo-pedido")} className="pedido add">
             <div className="footer">
-              <h3>Adicionar pedido</h3>
+              <h3>Novo pedido</h3>
               <i className="fa-solid fa-circle-plus fa-lg"></i>
             </div>
           </div>

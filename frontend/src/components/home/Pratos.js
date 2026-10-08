@@ -63,7 +63,7 @@ function Pratos() {
           <div onClick={()=>navigate("/novo-prato")} className="prato add">
             <img src="https://static.vecteezy.com/system/resources/thumbnails/056/202/171/small/add-image-or-photo-icon-vector.jpg" />
             <div className="footer">
-              <h3>Adicionar prato</h3>
+              <h3>Novo prato</h3>
               <i className="fa-solid fa-circle-plus fa-lg"></i>
             </div>
           </div>
