@@ -17,12 +17,34 @@ section.novo form {
   align-items: center;
 }
 
+section.novo form input {
+  max-width: none;
+}
+
+section.novo form select {
+  max-width: none;
+}
+
+section.novo form textarea {
+  max-width: 620px;
+}
+
+section.novo form button {
+  max-width: none;
+}
+
 div.pratos-pequenos {
-  background-color: red;
+  position: relative;
+  overflow: auto;
+  height: 12rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0.5rem;
-  max-width: 400px;
+  width: 100%;
+}
+
+div.pratos-pequenos::-webkit-scrollbar {
+  display: none;
 }
 
 #pequeno {
