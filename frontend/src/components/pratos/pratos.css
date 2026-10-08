@@ -9,3 +9,31 @@ div.botoes{
   align-items: center;
   gap: 0.6rem;
 }
+
+div.todos-pratos {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+div.todos-pratos div.prato {
+  max-width: none;
+}
+
+@media screen and (max-width: 1280px) {
+  div.todos-pratos {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  div.todos-pratos {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  div.todos-pratos {
+    grid-template-columns: 1fr;
+  }
+}
