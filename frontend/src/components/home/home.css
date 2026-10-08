@@ -17,7 +17,7 @@ div.pratos, div.pedidos {
   margin: 0 auto;
 }
 
-div.prato:hover, div.pedido:hover {
+div.pratos div.prato:hover, div.pedidos div.pedido:hover {
   transform: scale(1.03);
   cursor: pointer;
   transition: all 0.3s;

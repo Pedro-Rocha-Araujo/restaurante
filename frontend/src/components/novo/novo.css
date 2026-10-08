@@ -1,4 +1,4 @@
-section.novo-prato {
+section.novo {
   width: 98%;
   max-width: 1820px;
   margin: 0 auto;
@@ -7,8 +7,9 @@ section.novo-prato {
   align-items: center;
 }
 
-section.novo-prato form {
+section.novo form {
   width: 100%;
+  max-width: 620px;
   display: flex;
   gap: 0.6rem;
   flex-direction: column;
@@ -16,30 +17,31 @@ section.novo-prato form {
   align-items: center;
 }
 
-div.informacoes {
-  margin-top: 0.4rem;
-  width: 100%;
-  max-width: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-div.pequenos {
-  max-width: 700px;
+div.pratos-pequenos {
+  background-color: red;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
+  max-width: 400px;
 }
 
 #pequeno {
   width: 100%;
-  max-width: 200px;
+  position: relative;
+}
+
+div#pequeno i {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 50%;
+
 }
 
 #pequeno h3 {
   font-size: 0.9rem;
-}
-
-#pequeno .informacoes {
-  width: 92%;
 }
 
 h3.titulo-valor {

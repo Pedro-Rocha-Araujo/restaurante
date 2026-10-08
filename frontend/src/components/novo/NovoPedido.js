@@ -75,10 +75,10 @@ function NovoPedido() {
   return (
     <>
       <Header titulo="Novo pedido" emoji={<i className="fa-solid fa-circle-plus"></i>} /> 
-      <section className="novo-prato">
+      <section className="novo">
         <h2>Formulário</h2>
 
-        <form className="novo-prato" onSubmit={cadastrarPedido} >
+        <form className="novo" onSubmit={cadastrarPedido} >
 
             <input 
               type="number" 
@@ -100,15 +100,13 @@ function NovoPedido() {
 
             <h3 className="titulo-valor">Valor atual: R${valor}</h3>
             
-            <div className="pratos pequenos">
+            <div className="pratos-pequenos">
               {lista.map((prato, index)=>{
                 return (
                   <div key={index} className="prato" id="pequeno">
+                    <i onClick={()=> removerLista(index)} className="fa-solid fa-trash"></i>
                     <img src={prato.foto} />
-                    <div className="informacoes">
-                      <h3>{prato.nome}</h3>
-                      <i onClick={()=> removerLista(index)} className="fa-solid fa-trash"></i>
-                    </div>
+                    <h3>{prato.nome}</h3>
                   </div>
                 )
               })}
