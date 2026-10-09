@@ -38,12 +38,13 @@ export async function editarPedido(request, response) {
     const { id } = request.params
     const { status, mesa, lista, valor } = request.body
 
-    const query = await ModelPedido.findByIdAndUpdate({_id: id}, {
+    await ModelPedido.findByIdAndUpdate({ _id: id }, {
       status: status,
       mesa: mesa,
       lista: lista,
       valor: valor
     })
+
     return response.json({Mensagem: "Pedido editado om sucesso!"})
   } catch {
     return response.json({Erro: "Erro ao editar o pedido!"})

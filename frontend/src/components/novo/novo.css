@@ -71,3 +71,10 @@ h3.titulo-valor {
   color: #fff;
   margin: 0.6rem 0 0 0;
 }
+
+@media screen and (max-width: 480px) {
+  div.pratos-pequenos {
+    grid-template-columns: 1fr 1fr;
+    height: 13rem;
+  }
+}

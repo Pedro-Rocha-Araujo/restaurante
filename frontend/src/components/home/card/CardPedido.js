@@ -9,11 +9,12 @@ function Card({ itemCard, setItemCard }) {
   function removerCard() {
     setItemCard(null)
   }
+
   async function deletarPedido(id) {
     try {
       await axios.delete("http://localhost:4000/deletar-pedido/"+id)
       setItemCard(null)
-      toast.success("Pedido deletado com sucesso!")
+      toast.success("Pedido deletado!")
     } catch {
       toast.error("Erro ao deletar o pedido!")
     }

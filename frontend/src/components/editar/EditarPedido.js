@@ -7,11 +7,12 @@ import axios from "axios"
 function NovoPedido() {
   const [mesa, setMesa] = useState()
   const [pratos, setPratos] = useState([])
-  const [pratoSelecionado, setPratoSelecionado] = useState()
+  const [pratoSelecionado, setPratoSelecionado] = useState("")
   const [lista, setLista] = useState([])
   const [valor, setValor] = useState(0)
 
   const { id } = useParams()
+  const token = localStorage.getItem("token")
   const navigate = useNavigate()
 
   function handlePrato(e) {
@@ -25,27 +26,35 @@ function NovoPedido() {
     })
   }
 
-  function removerLista(id) {
-    let novaLista = lista.filter((item)=>{
-      return item._id !== id
+  function removerLista(index) {
+    const array = lista.filter((_,i)=> {
+      return i !== index
     })
-    setLista(novaLista)
+    setLista(array)
   }
 
   useEffect(()=>{
     async function pegarInformacoes() {
-      const response = await axios.get("http://localhost:4000/pedido/"+id)
+      if(!token) {
+        toast.error("Usuário não logado!")
+        return
+      }
+      const response = await axios.get("http://localhost:4000/pedido/"+id, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       setMesa(response.data.mesa)
       setLista(response.data.lista)
       setValor(response.data.valor)
     }
     pegarInformacoes()
-  }, [id])
+  }, [id, token])
 
   useEffect(()=> {
     function calcularValor() {
       const valorTotal = lista.reduce((acumulador, atual)=>{
-        return acumulador + atual
+        return acumulador + atual.preco
       }, 0)
       setValor(valorTotal)
     }
@@ -54,11 +63,15 @@ function NovoPedido() {
   
   useEffect(()=>{
     async function getPratos() {
-      const response = await axios.get("http://localhost:4000/pratos")
+      const response = await axios.get("http://localhost:4000/pratos", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       setPratos(response.data)
     }
     getPratos()
-  }, [])
+  }, [token])
 
   async function editarPedido(e) {
     e.preventDefault()
@@ -68,11 +81,14 @@ function NovoPedido() {
         mesa: mesa,
         lista: lista,
         valor: valor
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       })
-      toast.success("Pedido editado com sucesso!")
       navigate("/pedidos")
     } catch {
-      toast.error("Erro ao editar o pedido")
+      toast.error("Erro!")
     }
   }
 
@@ -92,7 +108,8 @@ function NovoPedido() {
               onChange={(e)=>setMesa(e.target.value)}
             />
 
-            <select required name="prato" onChange={handlePrato}>
+            <select required name="prato" defaultValue={pratoSelecionado} onChange={handlePrato}>
+             <option selected disabled value={""}>Selecione o prato</option>
               {pratos.map((prato)=>{
                 return (
                   <option key={prato._id} value={prato._id}>{prato.nome} - R${prato.preco}</option>
@@ -104,7 +121,7 @@ function NovoPedido() {
 
             <h3 className="titulo-valor">Valor atual: R${valor}</h3>
             <div className="pratos pequenos">
-              {lista.map((prato)=>{
+              {lista.map((prato, index)=>{
                 return (
                   <div key={prato._id} className="prato" id="pequeno">
                     <img 
@@ -112,8 +129,8 @@ function NovoPedido() {
                       alt={`Foto do prato ${prato.foto}`}
                      />
                     <div className="informacoes">
-                      <h3>{prato.nome}</h3>
-                      <i onClick={()=>removerLista(prato._id)} className="fa-solid fa-trash"></i>
+                      <h3>{prato.nome} - R$ {prato.preco}</h3>
+                      <i onClick={ ()=>removerLista(index) } className="fa-solid fa-trash"></i>
                     </div>
                   </div>
                 )

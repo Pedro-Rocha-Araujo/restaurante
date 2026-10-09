@@ -35,7 +35,7 @@ function TodosPedidos() {
         <div className="pedidos todos">
           {pedidos.map((pedido)=>{
             return (
-              <div onClick={()=>setItemCard(pedido)} key={pedido._nome} className="pedido">
+              <div onClick={()=>setItemCard(pedido)} key={pedido._id} className="pedido">
                   <div className="footer">
                     <h3>Mesa {pedido.mesa}</h3>
                       <i className="fa-solid fa-eye fa-lg"></i>

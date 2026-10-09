@@ -39,7 +39,7 @@ router.delete("/deletar-prato/:id", checarIdPrato, deletarPrato)
 router.get("/pedidos", getPedidos)
 router.get("/pedido/:id", checarIdPedido, getPedido)
 router.post("/cadastrar-pedido", checarCamposPedido, cadastrarPedido)
-router.put("/editar-pedido/:id", checarIdPedido, checarCamposPedido, editarPedido)
-router.delete("/deletar-pedido/:id", checarIdPedido, deletarPedido)
+router.put("/editar-pedido/:id", checarLogin, checarIdPedido, checarCamposPedido, editarPedido)
+router.delete("/deletar-pedido/:id", checarLogin, checarIdPedido, deletarPedido)
 
 export default router
