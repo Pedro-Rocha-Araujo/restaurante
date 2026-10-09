@@ -5,11 +5,11 @@ import { ToastContainer } from "react-toastify"
 function App() {
   return (
     <BrowserRouter>
+      <ToastContainer 
+        autoClose="1000" 
+        theme="dark"
+      />
       <main>
-        <ToastContainer 
-          autoClose="1000" 
-          theme="dark"
-        />
         <RouterApp />
       </main>
     </BrowserRouter>

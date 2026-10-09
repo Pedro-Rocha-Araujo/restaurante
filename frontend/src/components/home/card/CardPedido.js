@@ -34,7 +34,7 @@ function Card({ itemCard, setItemCard }) {
                 <i onClick={()=>atualizarPedido(itemCard._id)} className="fa-solid fa-pen-to-square fa-lg"></i>
               </div>
             </div>
-            <div className="pratos">
+            <div className="pratos-card">
               {itemCard.lista.map((prato)=>{
                 return (
                   <div key={prato._id} className="prato" id="pequeno">

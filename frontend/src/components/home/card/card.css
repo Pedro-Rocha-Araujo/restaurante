@@ -21,6 +21,16 @@ div.card {
   border-radius: 1rem;
 }
 
+div.pratos-card {
+  display: relative;
+  overflow: auto;
+  height: 12rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.2rem;
+  justify-items: center;
+}
+
 div.card h2 {
   margin-bottom: 0.2rem;
   color: #1c1c1c;
@@ -51,7 +61,20 @@ button.card {
   max-width: none;
 }
 
-
 span.valor {
   margin: 0.8rem 0 0 0;
+}
+
+@media screen and (max-width: 768px) {
+  div.pratos-card {
+    grid-template-columns: 1fr 1fr;
+    height: 16rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  div.pratos-card {
+    grid-template-columns: 1fr;
+    height: 17rem;
+  }
 }
