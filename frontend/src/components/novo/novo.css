@@ -39,6 +39,7 @@ div.pratos-pequenos {
   height: 12rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
   gap: 0.5rem;
   width: 100%;
 }
@@ -72,7 +73,7 @@ h3.titulo-valor {
   margin: 0.6rem 0 0 0;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 678px) {
   div.pratos-pequenos {
     grid-template-columns: 1fr 1fr;
     height: 13rem;

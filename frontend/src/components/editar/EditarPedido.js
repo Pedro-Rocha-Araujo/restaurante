@@ -120,7 +120,7 @@ function NovoPedido() {
             <button onClick={adicionarLista} type="button">Adicionar</button>
 
             <h3 className="titulo-valor">Valor atual: R${valor}</h3>
-            <div className="pratos pequenos">
+            <div className="pratos-pequenos">
               {lista.map((prato, index)=>{
                 return (
                   <div key={prato._id} className="prato" id="pequeno">
